@@ -31,3 +31,9 @@ desktop.ini
 /fuel/app/logs/*/*/*
 /fuel/app/cache/*/*
 /fuel/app/config/crypt.php
+
+# CircleCI
+Gemfile.lock
+
+# Vagrant
+.vagrant

@@ -12,4 +12,5 @@ Nginx 1.10.1
 
 ## Setup
 
-vagrant box add CentOS7 http://ftp.jaist.ac.jp/pub/Linux/CentOS/7.2.1511/isos/x86_64/CentOS-7-x86_64-DVD-1511.iso 
+vagrant box add CentOS71 https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.1/vagrant-centos-7.1.box
+vagrant up

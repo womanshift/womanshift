@@ -1,3 +1,5 @@
+FROM centos:7
+
 RUN yum update -y
 RUN yum install -y epel-release
 RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm

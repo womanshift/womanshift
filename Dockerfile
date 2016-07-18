@@ -3,7 +3,7 @@ FROM centos:7
 RUN yum update -y
 RUN yum install -y epel-release
 RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-RUN yum install -y --enablerepo=epel,remi-php70 php php-common php-devel php-mbstring php-mcrypt php-pdo php-gd php-pear php-fpm php-xml php-gmp php-cli php-mysql
+RUN yum install -y --enablerepo=epel,remi-php70 php php-devel php-mbstring php-pdo php-gd php-fpm
 RUN yum install -y nginx
 
 COPY . /opt/ 

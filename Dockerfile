@@ -1,9 +1,9 @@
-FROM centos:7
+FROM debian:jessie
 
-RUN yum update -y
-RUN yum upgrade -y
-RUN yum install -y php php-devel php-fpm
-RUN yum install -y nginx
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y php php-devel php-fpm
+RUN apt-get install -y nginx
 
 COPY . /opt/ 
 COPY ./docker/nginx.conf /etc/nginx/

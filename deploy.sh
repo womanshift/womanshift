@@ -11,11 +11,11 @@ configure_aws_cli(){
 
 deploy_cluster() {
 
-    family="womanshift-web-task-family"
+    family="womanshift"
 
     make_task_def
     register_definition
-    if [[ $(aws ecs update-service --cluster womanshift-web-cluster --service womanshift-web --task-definition $revision | \
+    if [[ $(aws ecs update-service --cluster womanshift --service womanshift --task-definition $revision | \
                    $JQ '.service.taskDefinition') != $revision ]]; then
         echo "Error updating service."
         return 1
@@ -24,7 +24,7 @@ deploy_cluster() {
     # wait for older revisions to disappear
     # not really necessary, but nice for demos
     for attempt in {1..30}; do
-        if stale=$(aws ecs describe-services --cluster womanshift-web-cluster --services womanshift-web | \
+        if stale=$(aws ecs describe-services --cluster womanshift --services womanshift | \
                        $JQ ".services[0].deployments | .[] | select(.taskDefinition != \"$revision\") | .taskDefinition"); then
             echo "Waiting for stale deployments:"
             echo "$stale"
@@ -41,8 +41,8 @@ deploy_cluster() {
 make_task_def(){
 	task_template='[
 		{
-			"name": "womanshift-web",
-			"image": "%s.dkr.ecr.us-east-1.amazonaws.com/womanshift-web:%s",
+			"name": "womanshift",
+			"image": "%s.dkr.ecr.us-east-1.amazonaws.com/womanshift:%s",
 			"essential": true,
 			"memory": 200,
 			"cpu": 10,
@@ -60,7 +60,7 @@ make_task_def(){
 
 push_ecr_image(){
 	eval $(aws ecr get-login --region us-east-1)
-	docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift-web:$CIRCLE_SHA1
+	docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift:$CIRCLE_SHA1
 }
 
 register_definition() {

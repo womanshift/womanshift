@@ -1,9 +1,6 @@
-FROM debian:jessie
+FROM php:7.0.8-fpm
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y php php-devel php-fpm
-RUN apt-get install -y nginx
+COPY . /opt/womanshift/
+WORKDIR /opt/womanshift/
 
-COPY . /opt/ 
 COPY ./docker/nginx.conf /etc/nginx/

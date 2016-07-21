@@ -1,8 +1,6 @@
-FROM php:7.0.8-fpm
+FROM php:7.0.8-cli
 
-RUN apt-get update -y \
-  && apt-get upgrade -y \
-  && apt-get install -y nginx
+RUN apt-get install -y nginx
 
 COPY ./docker/nginx.conf /etc/nginx/
 COPY . /opt/womanshift/

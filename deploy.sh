@@ -2,10 +2,10 @@
 
 # valiabls
 AWS_DEFAULT_REGION=us-east-1
-AWS_ECS_TASKDEF_NAME=womanshift
-AWS_ECS_CLUSTER_NAME=womanshift
-AWS_ECS_SERVICE_NAME=womanshift
-AWS_ECR_REP_NAME=womanshift
+AWS_ECS_TASKDEF_NAME=womanshift-web
+AWS_ECS_CLUSTER_NAME=womanshift-web
+AWS_ECS_SERVICE_NAME=womanshift-web
+AWS_ECR_REP_NAME=womanshift-web
 
 # Create Task Definition
 make_task_def(){

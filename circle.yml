@@ -4,11 +4,11 @@ machine:
 
 dependencies:
   post:
-    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift:$CIRCLE_SHA1 .
+    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift-web:$CIRCLE_SHA1 .
 
 test:
   post:
-    - docker run -d -p 8080:80 --name womanshift $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift:$CIRCLE_SHA1; sleep 10
+    - docker run -d -p 80:8080 --name womanshift-web $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift-web:$CIRCLE_SHA1; sleep 10
 
 deployment:
   prod:

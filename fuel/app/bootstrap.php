@@ -19,9 +19,7 @@ require COREPATH.'bootstrap.php';
  * Fuel::PRODUCTION
  */
 //var_dump($_SERVER);
-\Fuel::$env = \Arr::get($_SERVER, 'FUEL_ENV', \Arr::get($_ENV, 'FUEL_ENV', \Fuel::DEVELOPMENT));
-var_dump(\Arr::get($_ENV, 'FUEL_ENV', \Fuel::DEVELOPMENT));
-var_dump(\Fuel::$env);
+\Fuel::$env = \Arr::get($_ENV, 'FUEL_ENV', \Fuel::DEVELOPMENT);
 
 // Initialize the framework with the config file.
 \Fuel::init('config.php');

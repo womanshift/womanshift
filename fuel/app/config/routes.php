@@ -1,5 +1,5 @@
 <?php
 return array(
-	#'_root_'  => '',  // The default route
-	#'_404_'   => '',    // The main 404 route
+	'_root_'  => 'home',  // The default route
+	'_404_'   => 'home',    // The main 404 route
 );

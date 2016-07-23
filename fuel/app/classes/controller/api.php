@@ -33,7 +33,7 @@ class Controller_Api extends Controller_Rest
         $test3['createdAt'] = '2016年7月22日';
         $contents[0] = $test1;
         $contents[1] = $test2;
-        $contents[3] = $test3;
+        $contents[2] = $test3;
 
         return $this->response(array(
             'contents' => array($contents),

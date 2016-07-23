@@ -4,5 +4,6 @@ COPY . /opt/womanshift
 
 RUN cp /opt/womanshift/conf/default.conf /etc/nginx/sites-available/default.conf
 
-EXPOSE 80
+ENV FUEL_ENV production
 
+EXPOSE 80

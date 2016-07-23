@@ -6,5 +6,5 @@
  */
 
 return array(
-
+	'profiling' => true,
 );

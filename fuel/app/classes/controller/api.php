@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Test extends Controller_Rest
+class Controller_Api extends Controller_Rest
 {
 
     public function get_list()

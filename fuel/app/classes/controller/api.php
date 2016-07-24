@@ -54,12 +54,14 @@ class Controller_Api extends Controller_Rest
             $councilor = Model_Councilor::find($answer->councilor_id);
             $question  = Model_Question::find($answer->question_id);
             $cards[] = array(
+                "created_at" => $answer['created_at'],
+                'icon_url' => $councilor['icon_url'],
+                'id'       => $answer['id'],
+                'location' => $councilor['location'],
                 'name'     => $councilor['name'],
                 'nickname' => $councilor['nickname'],
-                'location' => $councilor['location'],
-                'icon_url' => $councilor['icon_url'],
-                'title'    => $question['title'],
                 'text'     => $answer['text'],
+                'title'    => $question['title'],
                 );
         }
 

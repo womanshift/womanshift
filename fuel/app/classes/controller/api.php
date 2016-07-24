@@ -39,15 +39,30 @@ class Controller_Api extends Controller_Rest
         ));
     }
 
+    /**
+     * アンケート回答状況返却API
+     * @author Oishi Aoi
+     * @return json 
+     *
+    */
     public function get_cards()
     {
         $cards = array();
-        $hoge = new Model_User();
-        
-        $post = Model_User::find(1);
-        var_dump($post);
+        $answers = Model_Answer::find('all');
 
-        $cards[] = "hoge";
+        foreach ($answers as $answer) {
+            $councilor = Model_Councilor::find($answer->councilor_id);
+            $question  = Model_Question::find($answer->question_id);
+            $cards[] = array(
+                'name'     => $councilor['name'],
+                'nickname' => $councilor['nickname'],
+                'location' => $councilor['location'],
+                'icon_url' => $councilor['icon_url'],
+                'title'    => $question['title'],
+                'text'     => $answer['text'],
+                );
+        }
+
         return $this->response(array(
             'contents' => array($cards),
         ));

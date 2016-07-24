@@ -2,7 +2,6 @@
 
 class Controller_Api extends Controller_Rest
 {
-
     public function get_list()
     {
         $contents = array();
@@ -37,6 +36,20 @@ class Controller_Api extends Controller_Rest
 
         return $this->response(array(
             'contents' => array($contents),
+        ));
+    }
+
+    public function get_cards()
+    {
+        $cards = array();
+        $hoge = new Model_User();
+        
+        $post = Model_User::find(1);
+        var_dump($post);
+
+        $cards[] = "hoge";
+        return $this->response(array(
+            'contents' => array($cards),
         ));
     }
 }

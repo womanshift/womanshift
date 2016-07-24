@@ -1,10 +1,372 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
-</head>
-<body>
-めるこ作成中
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<title>Groumourous Party</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+		<style type="text/css">
+
+			* {
+			  box-sizing: border-box;
+			  -webkit-box-sizing: border-box;
+			  -moz-box-sizing: border-box;
+			  font-weight: lighter;
+			  padding: 0;
+			}
+
+			body {
+			  width: 100%;
+			  height: 100%;
+			  display: flex;
+			  flex-direction: row;
+			  flex-wrap: wrap;
+			  justify-content: center;
+			  align-items: center;
+			  background-color: #ffffff;
+			  font-family: Noto Sans CJK JP;
+			}
+
+			figure {
+				margin: 0px;
+			}
+
+			.container {
+			  width: 100%;
+			  background-color: #ffffff;
+			  overflow: visible;
+			  display: flex;
+			  flex-direction: row;
+			  flex-wrap: wrap;
+			  justify-content: center;
+			}
+
+			.flip-container {
+			  margin: 0 2%;
+			  cursor: pointer;
+			  width: 250px;
+			  height: 300px;
+			  -webkit-transition: all 0.2s;
+			  -moz-transition: all 0.2s;
+			  transition: all 0.2s;
+			  perspective: 1000;
+			  -webkit-perspective: 1000;
+			  -moz-perspective: 1000;
+			  display: inline-block;
+			}
+
+			.front,
+			.back {
+			  position: absolute;
+			  height: 300px;
+			  text-align: left;
+			  -webkit-backface-visibility: hidden;
+			  -moz-backface-visibility: hidden;
+			  backface-visibility: hidden;
+			  -webkit-transform-style: preserve-3d;
+			  -moz-transform-style: preserve-3d;
+			  transform-style: preserve-3d;
+			  -webkit-transition: all 0.5s;
+			  -moz-transition: all 0.5s;
+			  transition: all 0.5s;
+			  border-radius: 15px;
+			  background: #ffffff;
+			}
+
+			.front-image,
+			.back-image {
+			  max-width: 100%;
+			  max-height: 100%;
+			}
+
+			.back img {
+			  max-width: 100%;
+			  max-height: 100%;
+			}
+
+			.back {
+			  -webkit-transform: rotateY(-180deg);
+			  -moz-transform: rotateY(-180deg);
+			  transform: rotateY(-180deg);
+			}
+
+			.flipped .back {
+			  -webkit-transform: rotateY(0deg);
+			  -moz-transform: rotateY(0deg);
+			  transform: rotateY(0deg);
+			}
+
+			.flipped .front {
+			  -webkit-transform: rotateY(180deg);
+			  -moz-transform: rotateY(180deg);
+			  transform: rotateY(180deg);
+			}
+
+
+			@media screen and (max-height: 600px) {
+			  .flip-container {
+			    width: 350px;
+			    height: 370px;
+			  }
+
+			  .front,
+			  .back {
+			    position: absolute;
+			    width: 350px;
+			    height: 370px;
+			  }
+			
+			  .back p {
+			    font-size: 25px;
+			  }
+			}
+
+			@media screen and (max-height: 450px) {
+			  .flip-container {
+			    width: 200px;
+			    height: 220px;
+			  }
+
+			  .front,
+			  .back {
+			    position: absolute;
+			    width: 200px;
+			    height: 220px;
+			  }
+			
+			  .back p {
+			    font-size: 20px;
+			  }
+			}
+
+			@media screen and (max-width: 1000px) {
+			  .flip-container {
+			    width: 350px;
+			    height: 370px;
+			  }
+			  .front,
+			  .back {
+			    position: absolute;
+			    width: 350px;
+			    height: 370px;
+			  }
+			 
+			  .back p {
+			    font-size: 25px;
+			  }
+			}
+
+			@media screen and (max-width: 700px) {
+			  .flip-container {
+			    width: 200px;
+			    height: 220px;
+			  }
+
+			  .front,
+			  .back {
+			    position: absolute;
+			    width: 200px;
+			    height: 220px;
+			  }
+
+			  .back p {
+			    font-size: 12px;
+			  }
+			}
+
+			.menu-area-container {
+				width: 240px;
+				float: left;
+				position: fixed;
+			}
+
+			.menu-area-container img {
+				width: 240px;
+			}
+
+			.flip-area-container {
+				float: left;
+				border-left: medium solid #4164bb;
+				margin-left: 260px;
+				padding-left: 5px;
+			}
+
+			.flip-horizen {
+				width: 900px;
+				
+			}
+
+			.flip-container {
+				float: left;
+				margin: 15px 5px;
+			}
+
+			.menu-message {
+				background-color: #4164bb;
+				border-radius: 10px;
+				padding: 15px;
+				color: #ffffff;
+			}
+
+			.front-caption {
+			    position: relative;
+			}
+			.front-question,
+			.back-answer {
+			    position: absolute;
+			    top: 15px;
+			    left: 20px;
+			    font-weight: 800;
+			    width: 180px;
+			}
+
+			.buleText {
+				color: #4164bb;
+			}
+
+			.whiteText {
+				color: #ffffff;
+			}
+
+			.face-icon {
+				position: absolute;
+    			left: 20px;
+    			bottom: 30px;
+    			width: 80px;
+			}
+
+			.woman-name {
+				position: absolute;
+				left: 100px;
+				bottom: 30px;
+				font-weight: 900;
+			}
+
+		</style>
+	</head>
+	<body>
+
+	<!--
+    Each Class named "flip-container" contain Front And Back for the Flipping Card.
+    on Front We But Image by Change the "src" Attribute in "Img" Tag br New link.
+Example:
+    <img src="New_Link.png"/>
+    
+    on Back will change the text content.
+        - Title -> in Strong tag 
+            example:
+                <strong>Title</strong>
+-->
+		<div class="container">
+
+			<div class="menu-area-container">
+				<img src="Logo01.png">
+				<div class="menu-message">
+					Glamourous Party」は、<br>
+					超党派の若手女性議員ネットワークが運営する
+					「女性議員を身近に感じるサイト」です。<br><br>
+					「政治家っておっさんだけじゃないんだよ」をキーワードに、
+					不祥事などでマイナスイメージが多い政治家が
+					プライベートで考えていること、
+					ライフスタイルなどをお伝えしていきます。<br><br>
+					コンテンツを「ライフ（恋愛・結婚観も含む）」「仕事」にわけ、
+					スキマ時間に読めるコンテンツや、読者の女性の日々のスキルアップにも役立つ情報を発信していきます。
+				</div>
+			</div>
+
+			<div class="flip-area-container">
+
+				<div class="flip-horizen">
+					<script id="question-item" type="text/x-jquery-tmpl">
+						<div class="flip-container">
+							<div class="front ${questionStyle}">
+								<figure class="front-caption">
+									<img src="${cardUrlQ}" class="front-image"/>
+									<img src="${icon}" alt="お写真" class="face-icon">
+									<figcaption class="front-question"><p>${question}</p></figcaption>
+									<figcaption class="woman-name"><p>${name}</p></figcaption>
+								</figure>
+							</div>
+
+							<div class="back ${answerStyle}">
+								<figure class="front-caption">
+									<img src="${cardUrlA}" class="back-image"/>
+									<figcaption class="back-answer"><p>${answer}</p></figcaption>
+									<img src="${icon}" alt="お写真" class="face-icon">
+									<figcaption class="woman-name"><p>${name}</p></figcaption>
+								</figure>
+							</div>
+						</div>
+					</script>
+				</div>
+
+				
+
+			</div>
+		</div>
+		<script  type="text/javascript" charset="utf-8" async defer>
+
+			var data = {
+				"category": 1   // パラメータ
+			};
+
+			// API へリクエスト
+            $.getJSON('./sample.json',data, function(json) {
+                // 警告
+                if (json.contents[0].length === 0) {
+                    alert('コンテンツが見つかりませんでした(´・ω・｀)');
+                    return;
+                }
+
+				var cardsQuestion = [];
+				for (i=0; i<=20; i++) {
+
+					// 背景になるカードを交互に出し分ける
+					// ↑ によって文字も色わける
+					cardUrlQ = "./Questionwhite.png",
+					questionStyle =  "buleText",
+					cardUrlA = "./Answerblue.png",
+					answerStyle =  "whiteText";
+
+					if (i%2==0) {
+						var cardUrlQ = "./Questionblue.png",
+						questionStyle = "whiteText",
+						cardUrlA = "./Answerwhite.png",
+						answerStyle = "buleText";
+					}
+
+					// こたえが空白だったらはじく
+					if (json.contents[i].text === "") {
+						continue;
+					}
+
+					cardsQuestion.push(
+						{
+						 "name": json.contents[i].nickname,
+						 "question": json.contents[i].title,
+						 "answer": json.contents[i].text,
+						 "icon": json.contents[i].icon_url,
+						 "cardUrlQ": cardUrlQ,
+						 "cardUrlA": cardUrlA,
+						 "questionStyle": questionStyle,
+						 "answerStyle": answerStyle
+						}
+					);
+				}
+
+				$.tmpl($( "#question-item" ), cardsQuestion).appendTo( ".flip-horizen" );
+            });
+
+            $(document).on('click', '.flip-container', function() {
+				$(this).toggleClass('flipped');
+			});
+
+		</script>
+
+
+
+	</body>
 </html>

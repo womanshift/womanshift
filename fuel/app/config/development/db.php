@@ -6,7 +6,7 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=localhost;dbname=womanshift;unix_socket=/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock',
+			'dsn'        => 'mysql:host=localhost;dbname=womanshift',
 			'username'   => 'root',
 			'password'   => '',
 		),

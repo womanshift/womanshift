@@ -1,4 +1,7 @@
 <?php
+
+use Aws\S3\S3Client;
+
 class Controller_Admin_Councilors extends Controller_Admin
 {
 
@@ -27,11 +30,12 @@ class Controller_Admin_Councilors extends Controller_Admin
 
 			if ($val->run())
 			{
+				$icon_url = $this->upload_s3();
 				$councilors = Model_Councilor::forge(array(
 					'location' => Input::post('location'),
 					'name' => Input::post('name'),
 					'nickname' => Input::post('nickname'),
-					'icon_url' => Input::post('icon_url'),
+					'icon_url' => $icon_url,
 				));
 
 				if ($councilors and $councilors->save())
@@ -64,10 +68,11 @@ class Controller_Admin_Councilors extends Controller_Admin
 
 		if ($val->run())
 		{
+			$icon_url = $this->upload_s3();
 			$councilors->location = Input::post('location');
 			$councilors->name = Input::post('name');
 			$councilors->nickname = Input::post('nickname');
-			$councilors->icon_url = Input::post('icon_url');
+			$councilors->icon_url = $icon_url;
 
 			if ($councilors->save())
 			{
@@ -118,6 +123,46 @@ class Controller_Admin_Councilors extends Controller_Admin
 
 		Response::redirect('admin/councilors');
 
+	}
+
+	private function upload_s3()
+	{
+		$config = array(
+			'path' => APPPATH.'tmp',
+			'overwrite' => true,
+			'randomize' => true,
+			'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
+		);
+		Upload::process($config);
+
+		if (Upload::is_valid())
+		{
+			Upload::save(0);
+		}
+
+		$s3 = S3Client::factory(['credentials' => [
+				'key' => 'AKIAIZES7BN3X6NLRHEA',
+				'secret' => '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',
+			],
+			'region' => 'us-east-1',
+			'version' => 'latest',
+		]);
+		$bucket = 'womanshift';
+
+		$icon_url = null;
+		foreach (Upload::get_files() as $file)
+		{
+			$result = $s3->putObject(array(
+				'Bucket' => 'womanshift',
+				'Key' => $file['saved_as'],
+				'Body' => file_get_contents($file['saved_to'].$file['saved_as']),
+				'ACL' => 'public-read',
+			));
+			File::delete($file['saved_to'].$file['saved_as']);
+			$icon_url = $result['ObjectURL'];
+		}
+
+		return $icon_url;
 	}
 
 }

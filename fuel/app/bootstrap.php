@@ -10,6 +10,8 @@ require COREPATH.'bootstrap.php';
 // Register the autoloader
 \Autoloader::register();
 
+\Autoloader::add_namespace('Aws', VENDORPATH.'aws/aws-sdk-php/src/', true);
+
 /**
  * Your environment.  Can be set to any of the following:
  *
@@ -18,7 +20,6 @@ require COREPATH.'bootstrap.php';
  * Fuel::STAGING
  * Fuel::PRODUCTION
  */
-//var_dump($_SERVER);
 \Fuel::$env = \Arr::get($_ENV, 'FUEL_ENV', \Fuel::DEVELOPMENT);
 
 // Initialize the framework with the config file.

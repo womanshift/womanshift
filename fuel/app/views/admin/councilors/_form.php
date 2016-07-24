@@ -1,4 +1,4 @@
-<?php echo Form::open(array("class"=>"form-horizontal")); ?>
+<?php echo Form::open(array("class"=>"form-horizontal", "enctype"=>"multipart/form-data", 'method'=>'post')); ?>
 
 	<fieldset>
 		<div class="form-group">
@@ -18,9 +18,8 @@
 		</div>
 		<div class="form-group">
 			<?php echo Form::label('アイコン', 'icon_url', array('class'=>'control-label')); ?>
-		</div>
-		<div class="form-group">
-			<?php echo Form::file('icon_url', array('class' => 'col-md-8', 'placeholder'=>'アイコン')); ?>
+			<?php //echo Form::open(array()); ?>
+			<?php echo Form::file('icon_url'); ?>
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>

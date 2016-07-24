@@ -3,7 +3,7 @@
 <p>
 	<?php echo $councilors->location; ?></p>
 <p>
-	<?php echo $councilors->icon_url; ?></p>
+	<img src="<?php echo $councilors->icon_url; ?>" /></p>
 
 <?php echo Html::anchor('admin/councilors/edit/'.$councilors->id, '登録'); ?> |
 <?php echo Html::anchor('admin/councilors', '戻る'); ?>

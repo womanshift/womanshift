@@ -14,7 +14,7 @@
 	<tbody>
 <?php foreach ($councilors as $item): ?>		<tr>
 
-			<td><?php echo $item->icon_url; ?></td>
+			<td><img src="<?php echo $item->icon_url; ?>" width="25" height="25" /></td>
 			<td><?php echo $item->name; ?></td>
 			<td><?php echo $item->nickname; ?></td>
 			<td><?php echo $item->location; ?></td>

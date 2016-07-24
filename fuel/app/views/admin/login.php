@@ -11,7 +11,7 @@
 			<?php endif; ?>
 
 			<div class="form-group <?php echo ! $val->error('email') ?: 'has-error' ?>">
-				<label for="email">Email or Username:</label>
+				<label for="email">メールアドレス もしくは ユーザー名:</label>
 				<?php echo Form::input('email', Input::post('email'), array('class' => 'form-control', 'placeholder' => 'Email or Username', 'autofocus')); ?>
 
 				<?php if ($val->error('email')): ?>
@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="form-group <?php echo ! $val->error('password') ?: 'has-error' ?>">
-				<label for="password">Password:</label>
+				<label for="password">パスワード:</label>
 				<?php echo Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'Password')); ?>
 
 				<?php if ($val->error('password')): ?>
@@ -29,7 +29,7 @@
 			</div>
 
 			<div class="actions">
-				<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-lg btn-primary btn-block')); ?>
+				<?php echo Form::submit(array('value'=>'ログイン', 'name'=>'submit', 'class' => 'btn btn-lg btn-primary btn-block')); ?>
 			</div>
 
 		<?php echo Form::close(); ?>

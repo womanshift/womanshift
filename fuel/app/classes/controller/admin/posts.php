@@ -5,7 +5,7 @@ class Controller_Admin_Posts extends Controller_Admin
 	public function action_index()
 	{
 		$data['posts'] = Model_Post::find('all');
-		$this->template->title = "Posts";
+		$this->template->title = "投稿";
 		$this->template->content = View::forge('admin/posts/index', $data);
 
 	}
@@ -14,7 +14,7 @@ class Controller_Admin_Posts extends Controller_Admin
 	{
 		$data['post'] = Model_Post::find($id);
 
-		$this->template->title = "Post";
+		$this->template->title = "投稿";
 		$this->template->content = View::forge('admin/posts/view', $data);
 
 	}

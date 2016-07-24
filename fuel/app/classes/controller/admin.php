@@ -70,7 +70,7 @@ class Controller_Admin extends Controller_Base
 			}
 		}
 
-		$this->template->title = 'Login';
+		$this->template->title = '管理画面';
 		$this->template->content = View::forge('admin/login', array('val' => $val), false);
 	}
 
@@ -94,7 +94,7 @@ class Controller_Admin extends Controller_Base
 	 */
 	public function action_index()
 	{
-		$this->template->title = 'Dashboard';
+		$this->template->title = 'ダッシュボード';
 		$this->template->content = View::forge('admin/dashboard');
 	}
 

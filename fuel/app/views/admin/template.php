@@ -26,20 +26,21 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">My Site</a>
+				<a class="navbar-brand" href="/">GlamourousParty</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
-						<?php echo Html::anchor('admin', 'Dashboard') ?>
+						<?php echo Html::anchor('admin', 'ダッシュボード') ?>
 					</li>
 
 					<?php
 						$files = new GlobIterator(APPPATH.'classes/controller/admin/*.php');
 						foreach($files as $file)
-						{
+						 {
 							$section_segment = $file->getBasename('.php');
 							$section_title = Inflector::humanize($section_segment);
+                                                        if ($section_title == 'Councilors') $section_title = '議員メンバー'
 							?>
 							<li class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?>">
 								<?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
@@ -52,7 +53,7 @@
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $current_user->username ?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><?php echo Html::anchor('admin/logout', 'Logout') ?></li>
+							<li><?php echo Html::anchor('admin/logout', 'ログアウト') ?></li>
 						</ul>
 					</li>
 				</ul>
@@ -89,11 +90,7 @@
 		</div>
 		<hr/>
 		<footer>
-			<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
-			<p>
-				<a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.<br>
-				<small>Version: <?php echo e(Fuel::VERSION); ?></small>
-			</p>
+			<p class="pull-right"></p>
 		</footer>
 	</div>
 </body>

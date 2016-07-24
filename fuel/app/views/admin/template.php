@@ -40,7 +40,7 @@
 						 {
 							$section_segment = $file->getBasename('.php');
 							$section_title = Inflector::humanize($section_segment);
-                                                        if ($section_title == 'Posts') $section_title = '投稿'
+                                                        if ($section_title == 'Councilors') $section_title = '議員メンバー'
 							?>
 							<li class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?>">
 								<?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>

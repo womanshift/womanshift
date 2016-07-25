@@ -11,7 +11,7 @@ class Controller_Api extends Controller_Rest
     public function get_cards()
     {
         $cards = array();
-        $answers = Model_Answer::find('all');
+        $answers = Model_Answer::find('all', array('order_by' => array('id' => 'desc')));
 
         foreach ($answers as $answer) {
             $councilor = Model_Councilor::find($answer->councilor_id);

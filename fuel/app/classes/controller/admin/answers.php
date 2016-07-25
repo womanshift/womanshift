@@ -31,7 +31,7 @@ class Controller_Admin_Answers extends Controller_Admin
 			if ($val->run())
 			{
 				$answers = Model_Answer::forge(array(
-					'answer_id' => Input::post('answer_id'),
+					'councilor_id' => Input::post('councilor_id'),
 					'question_id' => Input::post('question_id'),
 					'text' => Input::post('text'),
 				));
@@ -66,7 +66,7 @@ class Controller_Admin_Answers extends Controller_Admin
 
 		if ($val->run())
 		{
-			$answers->answer_id = Input::post('answer_id');
+			$answers->councilor_id = Input::post('councilor_id');
 			$answers->question_id = Input::post('question_id');
 			$answers->text = Input::post('text');
 
@@ -87,7 +87,7 @@ class Controller_Admin_Answers extends Controller_Admin
 		{
 			if (Input::method() == 'POST')
 			{
-				$answers->answer_id = $val->validated('answer_id');
+				$answers->councilor_id = $val->validated('councilor_id');
 				$answers->question_id = $val->validated('question_id');
 				$answers->icon_url = $val->validated('icon_url');
 

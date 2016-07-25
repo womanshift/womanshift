@@ -140,8 +140,8 @@ class Controller_Admin_Councilors extends Controller_Admin
 		}
 
 		$s3 = S3Client::factory(['credentials' => [
-				'key' => 'AKIAIZES7BN3X6NLRHEA',
-				'secret' => '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',
+				'key' => $_ENV['AWS_KEY'],
+				'secret' => $_ENV['AWS_SECRET_KEY'],
 			],
 			'region' => 'us-east-1',
 			'version' => 'latest',

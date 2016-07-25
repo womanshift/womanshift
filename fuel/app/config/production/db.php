@@ -7,9 +7,9 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=womanshift-mysql.ctqbzjwfxytq.us-east-1.rds.amazonaws.com;dbname=womanshift',
+			'dsn'        => 'mysql:host=' . $_ENV['WOMANSHIFT_DEFAULT_MYSQL_URL'],
 			'username'   => 'womanshift',
-			'password'   => 'WA5BL0Z1FA2vYVD9',
+			'password'   => $_ENV['WOMANSHIFT_DEFAULT_MYSQL_PASSWORD'],
 		),
 	),
 );

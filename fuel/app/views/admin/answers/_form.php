@@ -2,13 +2,14 @@
 
 	<fieldset>
 		<div class="form-group">
-			<?php echo Form::label('議員ID', 'councilor_id', array('class'=>'control-label')); ?>
-			<?php echo Form::input('councilor_id', Input::post('councilor_id', isset($answers) ? $answers->councilor_id : ''), array('class' => 'col-md-4 form-control')); ?>
+			<?php echo Form::label('議員', 'councilor_id', array('class'=>'control-label')); ?>
+			<?php echo Form::select('councilor_id', Input::post('councilor_id', isset($answers) ? $answers->councilor_id : ''), $councilors, array('class' => 'col-md-4 form-control')); ?>
 
 		</div>
 		<div class="form-group">
-			<?php echo Form::label('質問ID', 'question_id', array('class'=>'control-label')); ?>
-			<?php echo Form::input('question_id', Input::post('question_id', isset($answers) ? $answers->question_id : ''), array('class' => 'col-md-4 form-control')); ?>
+			<?php echo Form::label('質問', 'question_id', array('class'=>'control-label')); ?>
+			<?php echo Form::select('question_id', Input::post('question_id', isset($answers) ? $answers->question_id : ''), $questions, array('class' => 'col-md-4 form-control')); ?>
+
 
 		</div>
 		<div class="form-group">

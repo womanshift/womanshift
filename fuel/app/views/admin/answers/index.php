@@ -13,8 +13,8 @@
 	<tbody>
 <?php foreach ($answers as $item): ?>		<tr>
 
-			<td><?php echo $item->councilor_id; ?></td>
-			<td><?php echo $item->question_id; ?></td>
+			<td><?php echo $councilors[$item->councilor_id]; ?></td>
+			<td><?php echo $questions[$item->question_id]; ?></td>
 			<td><?php echo $item->text; ?></td>
 			<td>
 				<?php echo Html::anchor('admin/answers/view/'.$item->id, 'View'); ?> |

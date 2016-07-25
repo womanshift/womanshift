@@ -16,7 +16,6 @@ class Controller_Admin_Questions extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$data['questions'] = Model_Question::find($id);
-
 		$this->template->title = "質問";
 		$this->template->content = View::forge('admin/questions/view', $data);
 

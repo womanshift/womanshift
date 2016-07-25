@@ -8,6 +8,14 @@ class Controller_Admin_Answers extends Controller_Admin
 	public function action_index()
 	{
 		$data['answers'] = Model_Answer::find('all');
+		$questions = Model_Question::find('all');
+		foreach ($questions as $key => $val) {
+			$data['questions'][$key] = $val->title;
+		}
+		$councilors = Model_Councilor::find('all');
+		foreach ($councilors as $key => $val) {
+			$data['councilors'][$key] = $val->name;
+		}
 		$this->template->title = "回答";
 		$this->template->content = View::forge('admin/answers/index', $data);
 
@@ -16,7 +24,8 @@ class Controller_Admin_Answers extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$data['answers'] = Model_Answer::find($id);
-
+		$data['questions'] = Model_Question::find($data['answers']->question_id);
+		$data['councilors'] = Model_Councilor::find($data['answers']->councilor_id);
 		$this->template->title = "回答";
 		$this->template->content = View::forge('admin/answers/view', $data);
 
@@ -54,8 +63,21 @@ class Controller_Admin_Answers extends Controller_Admin
 			}
 		}
 
+		$questions = array();
+		$_questions = Model_Question::find('all');
+		foreach ($_questions as $key => $val) {
+			$questions[$key] = $val->title;
+		}
+		$this->template->set_global('questions', $questions, false);
+		$councilors = array();
+		$_councilors = Model_Councilor::find('all');
+		foreach ($_councilors as $key => $val) {
+			$councilors[$key] = $val->name;
+		}
+		$this->template->set_global('councilors', $councilors, false);
+	
 		$this->template->title = "Answers";
-		$this->template->content = View::forge('admin/answers/create');
+		$this->template->content = View::forge('admin/answers/create', $data);
 
 	}
 
@@ -97,6 +119,19 @@ class Controller_Admin_Answers extends Controller_Admin
 			$this->template->set_global('answers', $answers, false);
 		}
 
+		$questions = array();
+		$_questions = Model_Question::find('all');
+		foreach ($_questions as $key => $val) {
+			$questions[$key] = $val->title;
+		}
+		$this->template->set_global('questions', $questions);
+		$councilors = array();
+		$_councilors = Model_Councilor::find('all');
+		foreach ($_councilors as $key => $val) {
+			$councilors[$key] = $val->name;
+		}
+		$this->template->set_global('councilors', $councilors);
+	
 		$this->template->title = "Answers";
 		$this->template->content = View::forge('admin/answers/edit');
 

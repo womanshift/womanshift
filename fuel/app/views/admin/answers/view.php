@@ -1,9 +1,9 @@
 <h2><?php echo $answers->id; ?></h2>
 
 <p>
-	<?php echo $answers->councilor_id; ?></p>
+	<?php echo $councilors->name; ?></p>
 <p>
-	<?php echo $answers->question_id; ?></p>
+	<?php echo $questions->title; ?></p>
 <p>
 	<?php echo $answers->text; ?></p>
 

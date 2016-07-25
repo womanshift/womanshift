@@ -16,7 +16,6 @@ class Controller_Admin_Councilors extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$data['councilors'] = Model_Councilor::find($id);
-
 		$this->template->title = "議員メンバー";
 		$this->template->content = View::forge('admin/councilors/view', $data);
 

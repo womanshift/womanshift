@@ -24,4 +24,13 @@ class Model_Answer extends \Orm\Model
 
 	protected static $_table_name = 'answers';
 
+	public static function validate($factory)
+	{
+		$val = Validation::forge($factory);
+		$val->add_field('councilor_id', '議員ID', 'required');
+		$val->add_field('question_id', '質問ID', 'required');
+		$val->add_field('text', '回答', 'required');
+
+		return $val;
+	}
 }

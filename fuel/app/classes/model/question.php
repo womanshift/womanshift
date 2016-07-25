@@ -22,4 +22,12 @@ class Model_Question extends \Orm\Model
 
 	protected static $_table_name = 'questions';
 
+	public static function validate($factory)
+	{
+		$val = Validation::forge($factory);
+		$val->add_field('title', '質問', 'required');
+
+		return $val;
+	}
+
 }

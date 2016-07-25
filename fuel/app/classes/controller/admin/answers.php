@@ -111,7 +111,7 @@ class Controller_Admin_Answers extends Controller_Admin
 			{
 				$answers->councilor_id = $val->validated('councilor_id');
 				$answers->question_id = $val->validated('question_id');
-				$answers->icon_url = $val->validated('icon_url');
+				$answers->text = $val->validated('text');
 
 				Session::set_flash('error', $val->error());
 			}

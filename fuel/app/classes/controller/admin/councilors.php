@@ -71,7 +71,7 @@ class Controller_Admin_Councilors extends Controller_Admin
 			$councilors->location = Input::post('location');
 			$councilors->name = Input::post('name');
 			$councilors->nickname = Input::post('nickname');
-			$councilors->icon_url = $icon_url;
+			if ($icon_url) $councilors->icon_url = $icon_url;
 
 			if ($councilors->save())
 			{

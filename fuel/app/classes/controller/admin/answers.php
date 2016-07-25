@@ -77,7 +77,7 @@ class Controller_Admin_Answers extends Controller_Admin
 		$this->template->set_global('councilors', $councilors, false);
 	
 		$this->template->title = "Answers";
-		$this->template->content = View::forge('admin/answers/create', $data);
+		$this->template->content = View::forge('admin/answers/create');
 
 	}
 

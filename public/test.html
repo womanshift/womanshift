@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="http://fb.me/react-0.13.3.js"></script>
+        <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="content"></div>
+        <script type="text/jsx">
+            var ContentNode = React.createClass({
+                render: function() {
+                    console.dir(this.props);
+                    return (
+                        <li>
+                            {this.props.content.id}/
+                            {this.props.content.nickname}/
+                            {this.props.content.title}/
+                            {this.props.content.text}
+                        </li>
+                    );
+                }
+            });
+            var ContentList = React.createClass({
+                render: function() {
+                    var contentNodes = this.props.contents.map(function(content){
+                        return (
+                            <ContentNode content={content} key={content.id}>
+                            </ContentNode>
+                        );
+                    });
+                    return (
+                        <ul>
+                            {contentNodes}
+                        </ul>
+                    );
+                }
+            });
+            var ContentBox = React.createClass({
+                loadContents: function() {
+                    this._ajax("", "get", null, function(data) {
+                        this.setState({contents: data.contents});
+                    });
+                },
+                getInitialState: function() {
+                    return {contents: []};
+                },
+                componentDidMount: function() {
+                    this.loadContents();
+                },
+                _ajax: function(url_opt, method, data, successCallback) {
+                    $.ajax({
+                        url: this.props.url + url_opt,
+                        dataType: "json",
+                        method: method,
+                        data: data,
+                        success: function(data) {
+                            (successCallback.bind(this))(data);
+                        }.bind(this)
+                    });
+                },
+                render: function() {
+                    return (
+                        <div>
+                            <ContentList contents={this.state.contents} />
+                        </div>
+                    );
+                }
+            });
+            React.render(
+                <ContentBox url='/api/cards.json'/>,
+                document.getElementById('content')
+            );
+        </script>
+    </body>
+</html>

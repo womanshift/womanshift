@@ -10,6 +10,8 @@ class Controller_Api extends Controller_Rest
     */
     public function get_cards()
     {
+	header('Access-Control-Allow-Origin: *');
+
         $cards = array();
         $answers = Model_Answer::find('all', array('order_by' => array('id' => 'desc')));
 
@@ -29,7 +31,7 @@ class Controller_Api extends Controller_Rest
         }
 
         return $this->response(array(
-            'contents' => array($cards),
+            'contents' => $cards,
         ));
     }
 }

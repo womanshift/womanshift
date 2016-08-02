@@ -4,6 +4,8 @@ COPY . /opt/womanshift
 
 COPY conf/default.conf /etc/nginx/sites-available/default.conf
 
+RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php7/php-fpm.d/www.conf
+
 RUN chmod 777 /opt/womanshift/fuel/app/logs
 RUN chmod 777 /opt/womanshift/fuel/app/tmp
 

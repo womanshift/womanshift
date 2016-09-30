@@ -6,9 +6,9 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=localhost;dbname=womanshift',
+			'dsn'        => 'mysql:host=' . $_ENV['WOMANSHIFT_DEFAULT_MYSQL_URL'],
 			'username'   => 'root',
-			'password'   => '',
+			'password'   => $_ENV['WOMANSHIFT_DEFAULT_MYSQL_PASSWORD'],
 		),
 	),
 );

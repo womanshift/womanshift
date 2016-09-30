@@ -31,5 +31,8 @@ desktop.ini
 /fuel/app/logs/*/*/*
 /fuel/app/cache/*/*
 # /fuel/app/config/crypt.php
-/fuel/app/config/development/*.php
-/fuel/app/config/production/*.php
+# /fuel/app/config/development/*.php
+# /fuel/app/config/production/*.php
+
+# docker
+initdb.d/*.sql

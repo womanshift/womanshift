@@ -8,7 +8,7 @@ machine:
 
 dependencies:
   post:
-    - docker build --build-arg WOMANSHIFT_DEFAULT_MYSQL_URL=$WOMANSHIFT_DEFAULT_MYSQL_URL --build-arg WOMANSHIFT_DEFAULT_MYSQL_PASSWORD=$WOMANSHIFT_DEFAULT_MYSQL_PASSWORD --build-arg AWS_SECRET_KEY=$AWS_SECRET_KEY --build-arg AWS_KEY=$AWS_KEY -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift-web:$CIRCLE_SHA1 .
+    - docker build --build-arg FUEL_ENV=production --build-arg WOMANSHIFT_DEFAULT_MYSQL_URL=$WOMANSHIFT_DEFAULT_MYSQL_URL --build-arg WOMANSHIFT_DEFAULT_MYSQL_PASSWORD=$WOMANSHIFT_DEFAULT_MYSQL_PASSWORD --build-arg AWS_SECRET_KEY=$AWS_SECRET_KEY --build-arg AWS_KEY=$AWS_KEY -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/womanshift-web:$CIRCLE_SHA1 .
 
 test:
   post:

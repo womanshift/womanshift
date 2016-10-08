@@ -6,7 +6,7 @@ Glamourous Party
 
 ## 準備
 
-`$ git@github.com:womanshift/womanshift.git`
+`$ git clone git@github.com:womanshift/womanshift.git`
 
 `$ cd womanshift/`
 

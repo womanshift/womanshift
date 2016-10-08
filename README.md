@@ -12,7 +12,7 @@ Glamourous Party
 
 `$ curl -sS https://getcomposer.org/installer | php`
 
-`$ php composer.phar update`
+`$ ./composer.phar install`
 
 `$ cp mysqldump.sql ./initdb.d`
 

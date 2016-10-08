@@ -10,6 +10,10 @@ Glamourous Party
 
 `$ cd womanshift/`
 
+`$ curl -sS https://getcomposer.org/installer | php`
+
+`$ php composer.phar update`
+
 `$ cp mysqldump.sql ./initdb.d`
 
 `$ docker-compose up -d`

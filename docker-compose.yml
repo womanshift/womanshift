@@ -3,6 +3,8 @@ version: "2"
 services:
   web:
     build: .
+    volumes:
+      - .:/opt/womanshift
     ports:
       - "8080:80"
     links:

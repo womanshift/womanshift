@@ -10,9 +10,13 @@ Glamourous Party
 
 `$ cd womanshift/`
 
+`$ curl get.fuelphp.com/oil | sh`
+
 `$ curl -sS https://getcomposer.org/installer | php`
 
-`$ ./composer.phar install`
+`$ php composer.phar self-update`
+
+`$ php composer.phar update`
 
 `$ cp mysqldump.sql ./initdb.d`
 

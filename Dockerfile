@@ -1,5 +1,7 @@
 FROM richarvey/nginx-php-fpm:php7
 
+WORKDIR /opt/womanshift
+
 ARG FUEL_ENV
 ARG WOMANSHIFT_DEFAULT_MYSQL_URL
 ARG WOMANSHIFT_DEFAULT_MYSQL_PASSWORD
@@ -20,5 +22,3 @@ RUN chmod 777 /opt/womanshift/fuel/app/logs
 RUN chmod 777 /opt/womanshift/fuel/app/tmp
 
 EXPOSE 80
-
-WORKDIR /opt/womanshift

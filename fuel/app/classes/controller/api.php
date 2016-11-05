@@ -2,36 +2,52 @@
 
 class Controller_Api extends Controller_Rest
 {
-    /**
-     * アンケート回答状況返却API
-     * @author Oishi Aoi
-     * @return json 
-     *
-    */
     public function get_cards()
     {
-	header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Origin: *');
 
-        $cards = array();
+        $contents = array();
         $answers = Model_Answer::find('all', array('order_by' => array('id' => 'desc')));
 
         foreach ($answers as $answer) {
             $councilor = Model_Councilor::find($answer->councilor_id);
             $question  = Model_Question::find($answer->question_id);
-            $cards[] = array(
-                "created_at" => $answer['created_at'],
-                'icon_url' => $councilor['icon_url'],
+            $contents[] = array(
                 'id'       => $answer['id'],
                 'location' => $councilor['location'],
                 'name'     => $councilor['name'],
                 'nickname' => $councilor['nickname'],
-                'text'     => $answer['text'],
+                'icon_url' => $councilor['icon_url'],
                 'title'    => $question['title'],
+                'text'     => $answer['text'],
+                "created_at" => $answer['created_at'],
                 );
         }
 
         return $this->response(array(
-            'contents' => $cards,
+            'contents' => $contents,
+        ));
+    }
+
+    public function get_councilors()
+    {
+        header('Access-Control-Allow-Origin: *');
+
+        $contents = array();
+        $councilors = Model_Councilor::find('all', array('order_by' => array('id' => 'desc')));
+
+        foreach ($councilors as $councilor) {
+          $contents[] = array(
+              'id'       => $councilor['id'],
+              'location' => $councilor['location'],
+              'name'     => $councilor['name'],
+              'nickname' => $councilor['nickname'],
+              'icon_url' => $councilor['icon_url'],
+              );
+        }
+
+        return $this->response(array(
+            'contents' => $contents,
         ));
     }
 }

@@ -18,6 +18,8 @@ COPY . /opt/womanshift
 
 COPY conf/default.conf /etc/nginx/sites-available/default.conf
 
+# CMDでphp oilの実行/db migrateの実行 docker log見ながら実行されているか確認する
+
 RUN chmod 777 /opt/womanshift/fuel/app/logs
 RUN chmod 777 /opt/womanshift/fuel/app/tmp
 

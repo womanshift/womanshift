@@ -21,6 +21,8 @@ COPY . /opt/womanshift
 RUN chmod 777 /opt/womanshift/fuel/app/logs
 RUN chmod 777 /opt/womanshift/fuel/app/tmp
 
-RUN /usr/bin/php7 oil refine migrate
+RUN curl -sS https://getcomposer.org/installer | /usr/bin/php7
+RUN /usr/bin/php7 composer.phar self-update
+RUN /usr/bin/php7 composer.phar update
 
 EXPOSE 80

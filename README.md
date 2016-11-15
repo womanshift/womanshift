@@ -10,14 +10,6 @@ Glamourous Party
 
 `$ cd womanshift/`
 
-`$ curl get.fuelphp.com/oil | sh`
-
-`$ curl -sS https://getcomposer.org/installer | php`
-
-`$ php composer.phar self-update`
-
-`$ php composer.phar update`
-
 `$ cp mysqldump.sql ./initdb.d`
 
 `$ docker-compose up -d`
@@ -26,4 +18,4 @@ http://localhost:8080/
 
 ## DBマイグレーション
 
-`$ docker-compose run web /usr/bin/php7 oil refine migrate`
+`$ docker-compose run web /usr/bin/php7 oil refine migrate:current`

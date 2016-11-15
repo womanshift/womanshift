@@ -42,6 +42,8 @@ class Controller_Api extends Controller_Rest
               'location' => $councilor['location'],
               'name'     => $councilor['name'],
               'nickname' => $councilor['nickname'],
+              'catchphrase' => 'キャッチフレーズ',
+              'emphasis' => '力を入れていること',
               'icon_url' => $councilor['icon_url'],
               );
         }

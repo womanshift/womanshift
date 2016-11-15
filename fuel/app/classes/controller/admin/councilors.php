@@ -34,6 +34,8 @@ class Controller_Admin_Councilors extends Controller_Admin
 					'location' => Input::post('location'),
 					'name' => Input::post('name'),
 					'nickname' => Input::post('nickname'),
+					'catchphrase' => Input::post('catchphrase'),
+					'emphasis' => Input::post('emphasis'),
 					'icon_url' => $icon_url,
 				));
 
@@ -71,6 +73,8 @@ class Controller_Admin_Councilors extends Controller_Admin
 			$councilors->location = Input::post('location');
 			$councilors->name = Input::post('name');
 			$councilors->nickname = Input::post('nickname');
+			$councilors->catchphrase = Input::post('catchphrase');
+			$councilors->emphasis = Input::post('emphasis');
 			if ($icon_url) $councilors->icon_url = $icon_url;
 
 			if ($councilors->save())
@@ -93,6 +97,8 @@ class Controller_Admin_Councilors extends Controller_Admin
 				$councilors->location = $val->validated('location');
 				$councilors->name = $val->validated('name');
 				$councilors->nickname = $val->validated('nickname');
+				$councilors->catchphrase = $val->validated('catchphrase');
+				$councilors->emphasis = $val->validated('emphasis');
 				$councilors->icon_url = $val->validated('icon_url');
 
 				Session::set_flash('error', $val->error());

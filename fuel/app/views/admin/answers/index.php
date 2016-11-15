@@ -11,8 +11,8 @@
 		</tr>
 	</thead>
 	<tbody>
-<?php foreach ($answers as $item): ?>		<tr>
-
+    <?php foreach ($answers as $item): ?>
+	  <tr>
 			<td><?php echo $councilors[$item->councilor_id]; ?></td>
 			<td><?php echo $questions[$item->question_id]; ?></td>
 			<td><?php echo $item->text; ?></td>
@@ -20,16 +20,14 @@
 				<?php echo Html::anchor('admin/answers/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/answers/edit/'.$item->id, 'Edit'); ?> |
 				<?php echo Html::anchor('admin/answers/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('削除しますか？')")); ?>
-
 			</td>
 		</tr>
-<?php endforeach; ?>	</tbody>
+    <?php endforeach; ?>
+  </tbody>
 </table>
-
 <?php else: ?>
 <p>まだ登録されていません</p>
-
-<?php endif; ?><p>
+<?php endif; ?>
+<p>
 	<?php echo Html::anchor('admin/answers/create', '回答を追加する', array('class' => 'btn btn-success')); ?>
-
 </p>

@@ -14,13 +14,13 @@ ENV WOMANSHIFT_DEFAULT_MYSQL_PASSWORD $WOMANSHIFT_DEFAULT_MYSQL_PASSWORD
 ENV AWS_SECRET_KEY $AWS_SECRET_KEY
 ENV AWS_KEY $AWS_KEY
 
-COPY . /opt/womanshift
-
 COPY conf/default.conf /etc/nginx/sites-available/default.conf
 
-# CMDでphp oilの実行/db migrateの実行 docker log見ながら実行されているか確認する
+COPY . /opt/womanshift
 
 RUN chmod 777 /opt/womanshift/fuel/app/logs
 RUN chmod 777 /opt/womanshift/fuel/app/tmp
+
+RUN docker-compose run web /usr/bin/php7 oil refine migrate
 
 EXPOSE 80

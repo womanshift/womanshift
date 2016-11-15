@@ -16,7 +16,6 @@
 	</script>
 </head>
 <body>
-
 	<?php if ($current_user): ?>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -33,7 +32,6 @@
 					<li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
 						<?php echo Html::anchor('admin', 'ダッシュボード') ?>
 					</li>
-
 					<?php
 						$files = new GlobIterator(APPPATH.'classes/controller/admin/*.php');
 						foreach($files as $file)
@@ -63,7 +61,6 @@
 		</div>
 	</div>
 	<?php endif; ?>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">

@@ -23,3 +23,7 @@ Glamourous Party
 `$ docker-compose up -d`
 
 http://localhost:8080/
+
+## DBマイグレーション
+
+`$ docker-compose run web /usr/bin/php7 oil refine migrate`

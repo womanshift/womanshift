@@ -21,6 +21,6 @@ COPY . /opt/womanshift
 RUN chmod 777 /opt/womanshift/fuel/app/logs
 RUN chmod 777 /opt/womanshift/fuel/app/tmp
 
-RUN docker-compose run web /usr/bin/php7 oil refine migrate
+RUN /usr/bin/php7 oil refine migrate
 
 EXPOSE 80

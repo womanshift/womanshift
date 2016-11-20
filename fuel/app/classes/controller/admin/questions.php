@@ -63,7 +63,7 @@ class Controller_Admin_Questions extends Controller_Admin
 
 		if ($val->run())
 		{
-			$questions->title = Input::post('ltitle');
+			$questions->title = Input::post('title');
 
 			if ($questions->save())
 			{

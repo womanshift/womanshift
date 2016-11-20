@@ -318,7 +318,7 @@ Example:
 			};
 
 			// API へリクエスト
-            $.getJSON('./sample.json',data, function(json) {
+            $.getJSON('http://glamourousparty.com/api/cards.json',data, function(json) {
                 // 警告
                 if (json.contents[0].length === 0) {
                     alert('コンテンツが見つかりませんでした(´・ω・｀)');

@@ -26,7 +26,6 @@ class Model_Question extends \Orm\Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('title', '質問', 'required');
-
 		return $val;
 	}
 

@@ -30,8 +30,6 @@ class Model_Answer extends \Orm\Model
 		$val->add_field('councilor_id', '議員ID', 'required');
 		$val->add_field('question_id', '質問ID', 'required');
 		$val->add_field('text', '回答', 'required');
-		$val->add_field('icon_url', 'アイコン', 'required');
-
 		return $val;
 	}
 }

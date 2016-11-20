@@ -3,6 +3,12 @@
 	<?php echo $councilors->location; ?>
 </p>
 <p>
+	<?php echo $councilors->catchphrase; ?>
+</p>
+<p>
+	<?php echo $councilors->emphasis; ?>
+</p>
+<p>
 	<img src="<?php echo $councilors->icon_url; ?>" />
 </p>
 <?php echo Html::anchor('admin/councilors/edit/'.$councilors->id, '登録'); ?> |

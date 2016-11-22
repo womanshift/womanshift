@@ -5,6 +5,7 @@
 	<thead>
 		<tr>
 			<th>タイトル</th>
+			<th>カテゴリ</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -12,6 +13,7 @@
 <?php foreach ($questions as $item): ?>
 	  <tr>
 			<td><?php echo $item->title; ?></td>
+			<td><?php if ($item->category_id) echo $categories[$item->category_id]; ?></td>
 			<td>
 				<?php echo Html::anchor('admin/questions/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/questions/edit/'.$item->id, 'Edit'); ?> |

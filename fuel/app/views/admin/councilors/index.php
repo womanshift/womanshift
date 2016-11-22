@@ -7,6 +7,9 @@
 			<th>アイコン</th>
 			<th>名前</th>
 			<th>ニックネーム</th>
+			<th>TwitterID</th>
+			<th>FacebookID</th>
+			<th>ホームページ</th>
 			<th>活動場所</th>
 			<th>キャッチフレーズ</th>
 			<th>力を入れていること</th>
@@ -19,6 +22,9 @@
 			<td><img src="<?php echo $item->icon_url; ?>" width="25" height="25" /></td>
 			<td><?php echo $item->name; ?></td>
 			<td><?php echo $item->nickname; ?></td>
+			<td><?php echo $item->twitter; ?></td>
+			<td><?php echo $item->facebook; ?></td>
+			<td><?php echo $item->link; ?></td>
 			<td><?php echo $item->location; ?></td>
 			<td><?php echo $item->catchphrase; ?></td>
 			<td><?php echo $item->emphasis; ?></td>

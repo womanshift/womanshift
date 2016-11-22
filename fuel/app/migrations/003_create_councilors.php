@@ -11,7 +11,7 @@ class Create_councilors
 			'location' => array('constraint' => 50, 'type' => 'varchar'),
 			'name' => array('constraint' => 50, 'type' => 'varchar'),
 			'nickname' => array('constraint' => 50, 'type' => 'varchar'),
-			'icon_url' => array('constraint' => 255, 'type' => 'varchar'),
+			'icon_url' => array('constraint' => 255, 'type' => 'varchar', 'null' => true),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 

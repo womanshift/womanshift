@@ -7,6 +7,9 @@ class Model_Councilor extends \Orm\Model
 		'location',
 		'name',
 		'nickname',
+		'twitter',
+		'facebook',
+		'link',
 		'icon_url',
 		'catchphrase',
 		'emphasis',
@@ -35,7 +38,6 @@ class Model_Councilor extends \Orm\Model
 		$val->add_field('nickname', 'ニックネーム', 'required|max_length[50]');
 		$val->add_field('catchphrase', 'キャッチフレーズ', 'max_length[255]');
 		$val->add_field('emphasis', '力を入れていること', 'max_length[255]');
-		$val->add_field('icon_url', 'アイコン', '');
 		return $val;
 	}
 

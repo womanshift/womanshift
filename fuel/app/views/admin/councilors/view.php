@@ -1,5 +1,14 @@
 <h2><?php echo $councilors->name; ?>(<?php echo $councilors->nickname; ?>)</h2>
 <p>
+	<?php echo $councilors->twitter; ?>
+</p>
+<p>
+	<?php echo $councilors->facebook; ?>
+</p>
+<p>
+	<?php echo $councilors->link; ?>
+</p>
+<p>
 	<?php echo $councilors->location; ?>
 </p>
 <p>

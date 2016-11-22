@@ -41,6 +41,7 @@
 							if ($section_title == 'Councilors') $section_title = '議員メンバー';
 							if ($section_title == 'Answers') $section_title = '回答';
 							if ($section_title == 'Questions') $section_title = '質問';
+							if ($section_title == 'Categories') $section_title = 'カテゴリ';
 							?>
 							<li class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?>">
 								<?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>

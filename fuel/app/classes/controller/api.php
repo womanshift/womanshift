@@ -26,7 +26,7 @@ class Controller_Api extends Controller_Rest
 
         foreach ($answers as $answer) {
             $contents[] = array(
-                'id'       => $answer['id'],
+                'id'       => (int)$answer['id'],
                 'location' => $answer['location'],
                 'name'     => $answer['name'],
                 'nickname' => $answer['nickname'],
@@ -34,7 +34,7 @@ class Controller_Api extends Controller_Rest
                 'title'    => $answer['title'],
                 'text'     => $answer['text'],
                 'category' => $answer['category'],
-                "created_at" => $answer['created_at'],
+                "created_at" => date('Y/m/d h:i:s', (int)$answer['created_at']),
               );
         }
 
@@ -52,7 +52,7 @@ class Controller_Api extends Controller_Rest
 
         foreach ($councilors as $councilor) {
           $contents[] = array(
-              'id'       => $councilor['id'],
+              'id'       => (int)$councilor['id'],
               'location' => $councilor['location'],
               'name'     => $councilor['name'],
               'nickname' => $councilor['nickname'],
@@ -79,7 +79,7 @@ class Controller_Api extends Controller_Rest
 
         foreach ($categories as $category) {
           $contents[] = array(
-              'id'       => $category['id'],
+              'id'       => (int)$category['id'],
               'name'     => $category['name'],
               );
         }

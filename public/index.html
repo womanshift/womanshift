@@ -41,7 +41,7 @@
 			  display: flex;
 			  flex-direction: row;
 			  flex-wrap: wrap;
-			  justify-content: center;
+			  /* justify-content: center; */
 			}
 
 			.flip-container {
@@ -284,6 +284,7 @@ Example:
 			<div class="flip-area-container">
 
 				<div class="flip-horizen">
+				aaaaa
 					<script id="question-item" type="text/x-jquery-tmpl">
 						<div class="flip-container">
 							<div class="front ${questionStyle}">
@@ -311,7 +312,7 @@ Example:
 
 			</div>
 		</div>
-		<script  type="text/javascript" charset="utf-8" async defer>
+		<script  type="text/javascript" charset="utf-8">
 
 			var data = {
 				"category": 1   // パラメータ
@@ -320,13 +321,13 @@ Example:
 			// API へリクエスト
             $.getJSON('http://glamourousparty.com/api/cards.json',data, function(json) {
                 // 警告
-                if (json.contents[0].length === 0) {
+                if (json.contents.length === 0) {
                     alert('コンテンツが見つかりませんでした(´・ω・｀)');
                     return;
                 }
 
 				var cardsQuestion = [];
-				for (i=0; i<=json.contents[i].length-1; i++) {
+				for (i=0; i<=json.contents.length-1; i++) {
 
 					// 背景になるカードを交互に出し分ける
 					// ↑ によって文字も色わける

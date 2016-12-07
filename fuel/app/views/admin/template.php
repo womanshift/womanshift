@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
+	<?php echo html_tag('link', array( 'rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Asset::get_file('favicon.ico', 'img'), ) ); ?>
+  <?php echo html_tag('link', array( 'rel' => 'icon', 'type' => 'image/x-icon', 'href' => Asset::get_file('favicon.ico', 'img'), ) ); ?>
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<style>
 		body { margin: 50px; }

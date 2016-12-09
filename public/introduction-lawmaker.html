@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>参加議員紹介</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+		<style type="text/css" media="screen">
+
+		.content-introduction-lawmaker {
+			padding: 20px;
+		}
+
+		.member-container {
+			border-radius: 10px;
+			width: 60%;
+			height: 250px;
+			vertical-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+			padding: 20px;
+		}
+
+		.member-container img {
+			width: 150px;
+			height: 150px;
+			display: block;
+			vertical-align: center;
+			margin: auto;
+		}
+
+		.color-blue {
+			color:  #ffffff;
+			background-color: #4164bb;
+		}
+
+		.color-white {
+			color:  #4164bb;
+			background-color: #ffffff;
+		}
+
+		.picture-area {
+			width: 40%;
+			float: left;
+		}
+
+		.info-area {
+			float: left;
+		}
+
+		.info-area p {
+			text-align: left;
+		}
+
+		</style>
+		<script>
+			$(function(){
+			$("#pc-header").load("./header.html");
+		  })
+		</script>
+	</head>
+	<body>
+		<div id="pc-header"></div>
+		<div class="content-introduction-lawmaker">
+		<script id="member" type="text/x-jquery-tmpl">
+			<div class="member-container color-blue">
+				<div class="picture-area">
+					<img src="./homme.png" alt="メンバー">
+					<div class="sns-area">
+						
+					</div>
+				</div>
+				<div class="info-area">
+						<p>${name}</p>	
+						<p>台東区議員</p>
+						<p>キャッチフレーズ</p>
+						<p>子育て、本命！〜やさしい議員</p>
+						<p>力を入れていること</p>
+						<p>子供、女性、開かれた区政（ICT）</p>
+				</div>
+			</div>
+		</script>
+		</div>
+
+
+
+		<script type="text/javascript">
+			// API へリクエスト
+            $.getJSON('http://glamourousparty.com/api/councilors', function(json) {
+                // 警告
+                if (json.contents[0].length === 0) {
+                    alert('コンテンツが見つかりませんでした(´・ω・｀)');
+                    return;
+                }
+				var memberInfo = [];
+				var i=0;
+				for (i=0; i<=json.contents.length-1; i++) {
+
+					// 背景になるカードを交互に出し分ける
+					// ↑ によって文字も色わける
+
+					if (i%2==0) {
+
+					}
+					memberInfo.push(
+						{
+						 "name": json.contents[i].name,
+						 "nickname" :json.contents[i].nickname
+						}
+					);
+				}
+
+				// $.tmpl($( "#member" ), memberInfo).appendTo( ".content-introduction-lawmaker" );
+				$.tmpl($( "#member" ), memberInfo).appendTo( ".content-introduction-lawmaker" );
+			});
+		</script>
+
+	</body>
+</html>

@@ -126,8 +126,8 @@
 
 			@media screen and (max-height: 450px) {
 			  .flip-container {
-			    width: 200px;
-			    height: 220px;
+			    width: 250px;
+			    height: 300px;
 			  }
 
 			  .front,
@@ -177,22 +177,8 @@
 			  }
 			}
 
-			.menu-area-container {
-				width: 240px;
-				background-color: #4164bb;
-				float: left;
-				position: fixed;
-				border-radius: 10px;
-			}
-
-			.menu-area-container img {
-				width: 230px;
-				margin: 5px;
-			}
-
 			.flip-area-container {
 				float: left;
-				border-left: medium solid #4164bb;
 				margin-left: 260px;
 				padding-left: 5px;
 			}
@@ -205,14 +191,6 @@
 			.flip-container {
 				float: left;
 				margin: 15px 5px;
-			}
-
-			.menu-message {
-				background-color: #4164bb;
-				border-radius: 10px;
-				padding: 15px;
-				color: #ffffff;
-				font-size: 14px;
 			}
 
 			.front-caption {
@@ -244,29 +222,23 @@
 
 			.woman-name {
 				position: absolute;
-				left: 100px;
+				left: 120px;
 				bottom: 30px;
 				font-weight: 900;
 			}
 
 		</style>
+		<script>
+			$(function(){
+			$("#pc-header").load("./header.html");
+		  })
+		</script>
 	</head>
 	<body>
-
-	<!--
-    Each Class named "flip-container" contain Front And Back for the Flipping Card.
-    on Front We But Image by Change the "src" Attribute in "Img" Tag br New link.
-Example:
-    <img src="New_Link.png"/>
-
-    on Back will change the text content.
-        - Title -> in Strong tag
-            example:
-                <strong>Title</strong>
--->
+		<div id="pc-header"></div>
 		<div class="container">
 
-			<div class="menu-area-container">
+<!-- 			<div class="menu-area-container">
 				<img src="Logo01.png">
 				<div class="menu-message">
 					Glamourous Party」は、<br>
@@ -279,12 +251,11 @@ Example:
 					コンテンツを「ライフ（恋愛・結婚観も含む）」「仕事」にわけ、
 					スキマ時間に読めるコンテンツや、読者の女性の日々のスキルアップにも役立つ情報を発信していきます。
 				</div>
-			</div>
+			</div> -->
 
 			<div class="flip-area-container">
 
 				<div class="flip-horizen">
-				aaaaa
 					<script id="question-item" type="text/x-jquery-tmpl">
 						<div class="flip-container">
 							<div class="front ${questionStyle}">

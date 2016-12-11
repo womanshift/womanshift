@@ -47,10 +47,12 @@
 
 		.info-area {
 			float: left;
+			width: 60%;
 		}
 
 		.info-area p {
 			text-align: left;
+			word-wrap: break-word;
 		}
 
 		</style>
@@ -63,24 +65,24 @@
 	<body>
 		<div id="pc-header"></div>
 		<div class="content-introduction-lawmaker">
-		<script id="member" type="text/x-jquery-tmpl">
-			<div class="member-container color-blue">
-				<div class="picture-area">
-					<img src="./homme.png" alt="メンバー">
-					<div class="sns-area">
-						
+			<script id="member" type="text/x-jquery-tmpl">
+				<div class="member-container color-blue">
+					<div class="picture-area">
+						<img src="${icon_url}" alt="メンバー">
+						<div class="sns-area">
+							
+						</div>
+					</div>
+					<div class="info-area">
+							<p>${name}</p>	
+							<p>${nickname}</p>
+							<p>キャッチフレーズ</p>
+							<p>${catchphrase}</p>
+							<p>力を入れていること</p>
+							<p>${emphasis}</p>
 					</div>
 				</div>
-				<div class="info-area">
-						<p>${name}</p>	
-						<p>台東区議員</p>
-						<p>キャッチフレーズ</p>
-						<p>子育て、本命！〜やさしい議員</p>
-						<p>力を入れていること</p>
-						<p>子供、女性、開かれた区政（ICT）</p>
-				</div>
-			</div>
-		</script>
+			</script>
 		</div>
 
 
@@ -106,7 +108,14 @@
 					memberInfo.push(
 						{
 						 "name": json.contents[i].name,
-						 "nickname" :json.contents[i].nickname
+						 "nickname":json.contents[i].nickname,
+						 "location":json.contents[i].location,
+						 "icon_url": json.contents[i].icon_url,
+						 "emphasis": json.contents[i].emphasis,
+						 "catchphrase": json.contents[i].catchphrase,
+						 "twitter": json.contents[i].twitter,
+						 "facebook": json.contents[i].facebook,
+						 "link": json.contents[i].link,
 						}
 					);
 				}

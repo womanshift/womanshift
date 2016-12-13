@@ -34,6 +34,11 @@ class Controller_Admin_Councilors extends Controller_Admin
 					'location' => Input::post('location'),
 					'name' => Input::post('name'),
 					'nickname' => Input::post('nickname'),
+					'twitter' => Input::post('twitter'),
+					'facebook' => Input::post('facebook'),
+					'link' => Input::post('link'),
+					'catchphrase' => Input::post('catchphrase'),
+					'emphasis' => Input::post('emphasis'),
 					'icon_url' => $icon_url,
 				));
 
@@ -55,7 +60,7 @@ class Controller_Admin_Councilors extends Controller_Admin
 			}
 		}
 
-		$this->template->title = "Councilors";
+		$this->template->title = "議員メンバー";
 		$this->template->content = View::forge('admin/councilors/create');
 
 	}
@@ -71,6 +76,11 @@ class Controller_Admin_Councilors extends Controller_Admin
 			$councilors->location = Input::post('location');
 			$councilors->name = Input::post('name');
 			$councilors->nickname = Input::post('nickname');
+			$councilors->twitter = Input::post('twitter');
+			$councilors->facebook = Input::post('facebook');
+			$councilors->link = Input::post('link');
+			$councilors->catchphrase = Input::post('catchphrase');
+			$councilors->emphasis = Input::post('emphasis');
 			if ($icon_url) $councilors->icon_url = $icon_url;
 
 			if ($councilors->save())
@@ -93,7 +103,12 @@ class Controller_Admin_Councilors extends Controller_Admin
 				$councilors->location = $val->validated('location');
 				$councilors->name = $val->validated('name');
 				$councilors->nickname = $val->validated('nickname');
-				$councilors->icon_url = $val->validated('icon_url');
+				$councilors->twitter = $val->validated('twitter');
+				$councilors->facebook = $val->validated('facebook');
+				$councilors->link = $val->validated('link');
+				$councilors->catchphrase = $val->validated('catchphrase');
+				$councilors->emphasis = $val->validated('emphasis');
+				if ($val->validated('icon_url')) $councilors->icon_url = $val->validated('icon_url');
 
 				Session::set_flash('error', $val->error());
 			}
@@ -101,7 +116,7 @@ class Controller_Admin_Councilors extends Controller_Admin
 			$this->template->set_global('councilors', $councilors, false);
 		}
 
-		$this->template->title = "Councilors";
+		$this->template->title = "議員メンバー";
 		$this->template->content = View::forge('admin/councilors/edit');
 
 	}

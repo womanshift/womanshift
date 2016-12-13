@@ -75,8 +75,8 @@ class Controller_Admin_Answers extends Controller_Admin
 			$councilors[$key] = $val->name;
 		}
 		$this->template->set_global('councilors', $councilors, false);
-	
-		$this->template->title = "Answers";
+
+		$this->template->title = "回答";
 		$this->template->content = View::forge('admin/answers/create');
 
 	}
@@ -131,8 +131,8 @@ class Controller_Admin_Answers extends Controller_Admin
 			$councilors[$key] = $val->name;
 		}
 		$this->template->set_global('councilors', $councilors);
-	
-		$this->template->title = "Answers";
+
+		$this->template->title = "回答";
 		$this->template->content = View::forge('admin/answers/edit');
 
 	}

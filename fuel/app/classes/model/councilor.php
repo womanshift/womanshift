@@ -7,7 +7,12 @@ class Model_Councilor extends \Orm\Model
 		'location',
 		'name',
 		'nickname',
+		'twitter',
+		'facebook',
+		'link',
 		'icon_url',
+		'catchphrase',
+		'emphasis',
 		'created_at',
 		'updated_at',
 	);
@@ -31,7 +36,8 @@ class Model_Councilor extends \Orm\Model
 		$val->add_field('location', '場所', 'required|max_length[50]');
 		$val->add_field('name', '名前', 'required|max_length[50]');
 		$val->add_field('nickname', 'ニックネーム', 'required|max_length[50]');
-
+		$val->add_field('catchphrase', 'キャッチフレーズ', 'max_length[255]');
+		$val->add_field('emphasis', '力を入れていること', 'max_length[255]');
 		return $val;
 	}
 

@@ -1,11 +1,10 @@
 <?php
 
-class Model_Question extends \Orm\Model
+class Model_Category extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'title',
-		'category_id',
+		'name',
 		'created_at',
 		'updated_at',
 	);
@@ -21,12 +20,12 @@ class Model_Question extends \Orm\Model
 		),
 	);
 
-	protected static $_table_name = 'questions';
+	protected static $_table_name = 'categories';
 
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('title', '質問', 'required');
+		$val->add_field('name', 'カテゴリ名', 'required|max_length[255]');
 		return $val;
 	}
 

@@ -8,6 +8,10 @@ class Controller_Admin_Questions extends Controller_Admin
 	public function action_index()
 	{
 		$data['questions'] = Model_Question::find('all');
+		$categories = Model_Category::find('all');
+		foreach ($categories as $key => $val) {
+			$data['categories'][$key] = $val->name;
+		}
 		$this->template->title = "質問";
 		$this->template->content = View::forge('admin/questions/index', $data);
 
@@ -16,6 +20,7 @@ class Controller_Admin_Questions extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$data['questions'] = Model_Question::find($id);
+		$data['categories'] = Model_Category::find($data['questions']->category_id);
 		$this->template->title = "質問";
 		$this->template->content = View::forge('admin/questions/view', $data);
 
@@ -31,6 +36,7 @@ class Controller_Admin_Questions extends Controller_Admin
 			{
 				$questions = Model_Question::forge(array(
 					'title' => Input::post('title'),
+					'category_id' => Input::post('category_id'),
 				));
 
 				if ($questions and $questions->save())
@@ -51,7 +57,14 @@ class Controller_Admin_Questions extends Controller_Admin
 			}
 		}
 
-		$this->template->title = "Questions";
+		$categories = array();
+		$_categories = Model_Category::find('all');
+		foreach ($_categories as $key => $val) {
+			$categories[$key] = $val->name;
+		}
+		$this->template->set_global('categories', $categories, false);
+
+		$this->template->title = "質問";
 		$this->template->content = View::forge('admin/questions/create');
 
 	}
@@ -63,7 +76,8 @@ class Controller_Admin_Questions extends Controller_Admin
 
 		if ($val->run())
 		{
-			$questions->title = Input::post('ltitle');
+			$questions->title = Input::post('title');
+			$questions->category_id = Input::post('category_id');
 
 			if ($questions->save())
 			{
@@ -83,6 +97,7 @@ class Controller_Admin_Questions extends Controller_Admin
 			if (Input::method() == 'POST')
 			{
 				$questions->title = $val->validated('title');
+				$questions->category_id = $val->validated('category_id');
 
 				Session::set_flash('error', $val->error());
 			}
@@ -90,7 +105,14 @@ class Controller_Admin_Questions extends Controller_Admin
 			$this->template->set_global('questions', $questions, false);
 		}
 
-		$this->template->title = "Questions";
+		$categories = array();
+		$_categories = Model_Category::find('all');
+		foreach ($_categories as $key => $val) {
+			$categories[$key] = $val->name;
+		}
+		$this->template->set_global('categories', $categories, false);
+
+		$this->template->title = "質問";
 		$this->template->content = View::forge('admin/questions/edit');
 
 	}

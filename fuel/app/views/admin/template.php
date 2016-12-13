@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
+	<?php echo html_tag('link', array( 'rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => Asset::get_file('favicon.ico', 'img'), ) ); ?>
+  <?php echo html_tag('link', array( 'rel' => 'icon', 'type' => 'image/x-icon', 'href' => Asset::get_file('favicon.ico', 'img'), ) ); ?>
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<style>
 		body { margin: 50px; }
@@ -16,7 +18,6 @@
 	</script>
 </head>
 <body>
-
 	<?php if ($current_user): ?>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -33,7 +34,6 @@
 					<li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
 						<?php echo Html::anchor('admin', 'ダッシュボード') ?>
 					</li>
-
 					<?php
 						$files = new GlobIterator(APPPATH.'classes/controller/admin/*.php');
 						foreach($files as $file)
@@ -43,6 +43,7 @@
 							if ($section_title == 'Councilors') $section_title = '議員メンバー';
 							if ($section_title == 'Answers') $section_title = '回答';
 							if ($section_title == 'Questions') $section_title = '質問';
+							if ($section_title == 'Categories') $section_title = 'カテゴリ';
 							?>
 							<li class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?>">
 								<?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
@@ -63,7 +64,6 @@
 		</div>
 	</div>
 	<?php endif; ?>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">

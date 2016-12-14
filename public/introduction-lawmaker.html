@@ -3,74 +3,14 @@
 	<head>
 		<title>参加議員紹介</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="/assets/css/common.css">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="./assets/css/common.css">
+		<link rel="stylesheet" type="text/css" href="introduction-lawmaker.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
-		<script type="text/javascript" src="/assets/js/common.js"></script>
+		<script type="text/javascript" src="./assets/js/common.js"></script>
 		<style type="text/css" media="screen">
-
-		.content-introduction-lawmaker {
-			padding: 20px;
-		}
-
-		.member-container {
-			border-radius: 10px;
-			width: 60%;
-			height: 250px;
-			vertical-align: center;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 20px;
-			padding: 20px;
-		}
-
-		.member-container img {
-			width: 150px;
-			height: 150px;
-			border-radius: 75px;
-			display: block;
-			vertical-align: center;
-			margin: auto;
-		}
-
-		.member-container a {
-			display: block;
-			margin: 5px;
-			float: left;
-		}
-
-		.color-blue {
-			color:  #ffffff;
-			background-color: #4164bb;
-		}
-
-		.color-white {
-			color:  #4164bb;
-			background-color: #ffffff;
-			border: 3px solid #4164bb;
-		}
-
-		.picture-area {
-			width: 40%;
-			float: left;
-		}
-
-		.sns-area {
-			width: 80%;
-		}
-
-		.info-area {
-			float: left;
-			width: 60%;
-		}
-
-		.info-area p {
-			text-align: left;
-			word-wrap: break-word;
-		}
-
 		</style>
 		<script>
 			$(function(){
@@ -95,10 +35,11 @@
 						</div>
 					</div>
 					<div class="info-area">
-							<p>${name}</p>	
-							<p>${nickname}</p>
+							<p class="woman-name">${name}</p>	
+							<br/>
 							<p>キャッチフレーズ</p>
 							<p>${catchphrase}</p>
+							<br/>
 							<p>力を入れていること</p>
 							<p>${emphasis}</p>
 					</div>

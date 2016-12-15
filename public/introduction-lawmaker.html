@@ -3,56 +3,14 @@
 	<head>
 		<title>参加議員紹介</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="./assets/css/common.css">
+		<link rel="stylesheet" type="text/css" href="introduction-lawmaker.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="./assets/js/common.js"></script>
 		<style type="text/css" media="screen">
-
-		.content-introduction-lawmaker {
-			padding: 20px;
-		}
-
-		.member-container {
-			border-radius: 10px;
-			width: 60%;
-			height: 250px;
-			vertical-align: center;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 20px;
-			padding: 20px;
-		}
-
-		.member-container img {
-			width: 150px;
-			height: 150px;
-			display: block;
-			vertical-align: center;
-			margin: auto;
-		}
-
-		.color-blue {
-			color:  #ffffff;
-			background-color: #4164bb;
-		}
-
-		.color-white {
-			color:  #4164bb;
-			background-color: #ffffff;
-		}
-
-		.picture-area {
-			width: 40%;
-			float: left;
-		}
-
-		.info-area {
-			float: left;
-		}
-
-		.info-area p {
-			text-align: left;
-		}
-
 		</style>
 		<script>
 			$(function(){
@@ -61,26 +19,32 @@
 		</script>
 	</head>
 	<body>
-		<div id="pc-header"></div>
+		<div id="logo"></div>
+		<div id="toggle"></div>
+		<div id="menu"></div>
+		
 		<div class="content-introduction-lawmaker">
-		<script id="member" type="text/x-jquery-tmpl">
-			<div class="member-container color-blue">
-				<div class="picture-area">
-					<img src="./homme.png" alt="メンバー">
-					<div class="sns-area">
-						
+			<script id="member" type="text/x-jquery-tmpl">
+				<div class="member-container ${colorStyle}">
+					<div class="picture-area">
+						<img src="${icon_url}" alt="メンバー">
+						<div class="sns-area">
+							<a href="${facebook}" class="">Facebook</a>
+							<a href="${twitter}" class="">twitter</a>
+							<a href="${link}" class="">link</a>
+						</div>
+					</div>
+					<div class="info-area">
+							<p class="woman-name">${name}</p>	
+							<br/>
+							<p>キャッチフレーズ</p>
+							<p>${catchphrase}</p>
+							<br/>
+							<p>力を入れていること</p>
+							<p>${emphasis}</p>
 					</div>
 				</div>
-				<div class="info-area">
-						<p>${name}</p>	
-						<p>台東区議員</p>
-						<p>キャッチフレーズ</p>
-						<p>子育て、本命！〜やさしい議員</p>
-						<p>力を入れていること</p>
-						<p>子供、女性、開かれた区政（ICT）</p>
-				</div>
-			</div>
-		</script>
+			</script>
 		</div>
 
 
@@ -99,14 +63,22 @@
 
 					// 背景になるカードを交互に出し分ける
 					// ↑ によって文字も色わける
-
+					var colorStyle = "color-white";
 					if (i%2==0) {
-
+						colorStyle = "color-blue";
 					}
 					memberInfo.push(
 						{
 						 "name": json.contents[i].name,
-						 "nickname" :json.contents[i].nickname
+						 "nickname":json.contents[i].nickname,
+						 "location":json.contents[i].location,
+						 "icon_url": json.contents[i].icon_url,
+						 "emphasis": json.contents[i].emphasis,
+						 "catchphrase": json.contents[i].catchphrase,
+						 "twitter": json.contents[i].twitter,
+						 "facebook": json.contents[i].facebook,
+						 "link": json.contents[i].link,
+						 "colorStyle": colorStyle
 						}
 					);
 				}

@@ -103,7 +103,7 @@ $(document).on('click', '.flip-container', function() {
 /* introduction-lawmaker */
 
 // API へリクエスト
-$.getJSON('/api/councilors', function(json) {
+$.getJSON('http://glamourousparty.com/api/councilors', function(json) {
     // 警告
     if (json.contents[0].length === 0) {
         alert('コンテンツが見つかりませんでした(´・ω・｀)');

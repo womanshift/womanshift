@@ -1,5 +1,6 @@
+/* common */
 body {
-
+    margin: 0px;
 }
 #logo {
     text-align: center;
@@ -34,7 +35,7 @@ body {
     content: "/";
 }
 .active {
-    background-image: url("././assets/img/flower.png");
+    background-image: url("/assets/img/flower.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 30px;
@@ -88,10 +89,17 @@ body {
     }
     .active:after {
         content: "　　";
-        background:url("././assets/img/flower.png");
+        background:url("/assets/img/flower.png");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: 20px;
         padding: 20px 0;
     }
 }
+
+/* index */
+
+/* about-site */
+
+/* introduction-lawmaker */
+

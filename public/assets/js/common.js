@@ -2,7 +2,7 @@ $(function() {
     var path = window.location.href.split('/').pop();
     $("#logo").append("<a href='/'><img src='/assets/img/logo.png' /></a>");
     $("#toggle").append("<img src='/assets/img/menu_button.png' />");
-    $.getJSON("/api/categories.json" , function(menu) {
+    $.getJSON("http://glamourousparty.com/api/categories.json" , function(menu) {
         var active = "";
         var html = "<div class='menu_title'>Glamourous Party<br/>menu</div>";
         html += "<ul>";

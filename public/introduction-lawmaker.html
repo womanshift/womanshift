@@ -11,8 +11,6 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 		<script type="text/javascript" src="./assets/js/common.js"></script>
-		<style type="text/css" media="screen">
-		</style>
 		<script>
 			$(function(){
 			$("#pc-header").load("./header.html");
@@ -23,7 +21,6 @@
 		<div id="logo"></div>
 		<div id="toggle"></div>
 		<div id="menu"></div>
-		
 		<div class="content-introduction-lawmaker">
 			<script id="member" type="text/x-jquery-tmpl">
 				<div class="member-container ${colorStyle}">
@@ -52,45 +49,5 @@
 				</div>
 			</script>
 		</div>
-
-
-
-		<script type="text/javascript">
-			// API へリクエスト
-            $.getJSON('http://glamourousparty.com/api/councilors', function(json) {
-                // 警告
-                if (json.contents[0].length === 0) {
-                    alert('コンテンツが見つかりませんでした(´・ω・｀)');
-                    return;
-                }
-				var memberInfo = [];
-				var i=0;
-				for (i=0; i<=json.contents.length-1; i++) {
-
-					// 背景になるカードを交互に出し分ける
-					// ↑ によって文字も色わける
-					var colorStyle = "color-white";
-					if (i%2==0) {
-						colorStyle = "color-blue";
-					}
-					memberInfo.push(
-						{
-						 "name": json.contents[i].name,
-						 "nickname":json.contents[i].nickname,
-						 "location":json.contents[i].location,
-						 "icon_url": json.contents[i].icon_url,
-						 "emphasis": json.contents[i].emphasis,
-						 "catchphrase": json.contents[i].catchphrase,
-						 "twitter": json.contents[i].twitter,
-						 "facebook": json.contents[i].facebook,
-						 "link": json.contents[i].link,
-						 "colorStyle": colorStyle
-						}
-					);
-				}
-				$.tmpl($( "#member" ), memberInfo).appendTo( ".content-introduction-lawmaker" );
-			});
-		</script>
-
 	</body>
 </html>

@@ -13,10 +13,6 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 		<script type="text/javascript" src="./assets/js/common.js"></script>
-		<style type="text/css">
-
-
-		</style>
 		<script>
 			$(function(){
 			$("#pc-header").load("./header.html");
@@ -27,10 +23,8 @@
 		<div id="logo"></div>
 		<div id="toggle"></div>
 		<div id="menu"></div>
-
 		<div class="container">
 			<div class="flip-area-container">
-
 				<div class="flip-horizen">
 					<script id="question-item" type="text/x-jquery-tmpl">
 						<div class="flip-container">
@@ -42,7 +36,6 @@
 									<figcaption class="woman-name"><p>${name}</p></figcaption>
 								</figure>
 							</div>
-
 							<div class="back ${answerStyle}">
 								<figure class="front-caption">
 									<img src="${cardUrlA}" class="back-image"/>
@@ -54,77 +47,7 @@
 						</div>
 					</script>
 				</div>
-
-
-
 			</div>
 		</div>
-		<script  type="text/javascript" charset="utf-8">
-			// カテゴリ取得
-			var category = "";
-			var param = location.search.substring(1).split('&');
-			// category切り替えられるようになったらパラメータから取得
-			if (!category=="") {
-				category = param[0];
-			}
-			var data = {
-				"category": category   // パラメータ
-			};
-
-			// API へリクエスト
-            $.getJSON('http://glamourousparty.com/api/cards',data, function(json) {
-                // 警告
-                if (json.contents.length === 0) {
-                    alert('コンテンツが見つかりませんでした(´・ω・｀)');
-                    return;
-                }
-
-				var cardsQuestion = [];
-				for (i=0; i<=json.contents.length-1; i++) {
-
-					// 背景になるカードを交互に出し分ける
-					// ↑ によって文字も色わける
-					cardUrlQ = "/assets/img/Questionwhite.png",
-					questionStyle =  "buleText",
-					cardUrlA = "/assets/img/Answerblue.png",
-					answerStyle =  "whiteText";
-
-					if (i%2==0) {
-						var cardUrlQ = "/assets/img/Questionblue.png",
-						questionStyle = "whiteText",
-						cardUrlA = "/assets/img/Answerwhite.png",
-						answerStyle = "buleText";
-					}
-
-					// こたえが空白だったらはじく
-					if (json.contents[i].text === "") {
-						continue;
-					}
-
-					cardsQuestion.push(
-						{
-						 "name": json.contents[i].nickname,
-						 "question": json.contents[i].title,
-						 "answer": json.contents[i].text,
-						 "icon": json.contents[i].icon_url,
-						 "cardUrlQ": cardUrlQ,
-						 "cardUrlA": cardUrlA,
-						 "questionStyle": questionStyle,
-						 "answerStyle": answerStyle
-						}
-					);
-				}
-
-				$.tmpl($( "#question-item" ), cardsQuestion).appendTo( ".flip-horizen" );
-            });
-
-            $(document).on('click', '.flip-container', function() {
-				$(this).toggleClass('flipped');
-			});
-
-		</script>
-
-
-
 	</body>
 </html>

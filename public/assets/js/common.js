@@ -33,3 +33,106 @@ function active_css(path, href){
     }
 
 }
+
+
+/* index */
+
+// カテゴリ取得
+var category = "";
+var param = location.search.substring(1).split('&');
+// category切り替えられるようになったらパラメータから取得
+if (!category=="") {
+    category = param[0];
+}
+var data = {
+    "category": category   // パラメータ
+};
+
+// API へリクエスト
+$.getJSON('http://glamourousparty.com/api/cards',data, function(json) {
+    // 警告
+    if (json.contents.length === 0) {
+        alert('コンテンツが見つかりませんでした(´・ω・｀)');
+        return;
+    }
+
+    var cardsQuestion = [];
+    for (i=0; i<=json.contents.length-1; i++) {
+
+        // 背景になるカードを交互に出し分ける
+        // ↑ によって文字も色わける
+        cardUrlQ = "/assets/img/Questionwhite.png",
+        questionStyle =  "buleText",
+        cardUrlA = "/assets/img/Answerblue.png",
+        answerStyle =  "whiteText";
+
+        if (i%2==0) {
+            var cardUrlQ = "/assets/img/Questionblue.png",
+            questionStyle = "whiteText",
+            cardUrlA = "/assets/img/Answerwhite.png",
+            answerStyle = "buleText";
+        }
+
+        // こたえが空白だったらはじく
+        if (json.contents[i].text === "") {
+            continue;
+        }
+
+        cardsQuestion.push(
+            {
+             "name": json.contents[i].nickname,
+             "question": json.contents[i].title,
+             "answer": json.contents[i].text,
+             "icon": json.contents[i].icon_url,
+             "cardUrlQ": cardUrlQ,
+             "cardUrlA": cardUrlA,
+             "questionStyle": questionStyle,
+             "answerStyle": answerStyle
+            }
+        );
+    }
+
+    $.tmpl($( "#question-item" ), cardsQuestion).appendTo( ".flip-horizen" );
+});
+
+$(document).on('click', '.flip-container', function() {
+    $(this).toggleClass('flipped');
+});
+
+
+/* introduction-lawmaker */
+
+// API へリクエスト
+$.getJSON('/api/councilors', function(json) {
+    // 警告
+    if (json.contents[0].length === 0) {
+        alert('コンテンツが見つかりませんでした(´・ω・｀)');
+        return;
+    }
+    var memberInfo = [];
+    var i=0;
+    for (i=0; i<=json.contents.length-1; i++) {
+
+        // 背景になるカードを交互に出し分ける
+        // ↑ によって文字も色わける
+        var colorStyle = "color-white";
+        if (i%2==0) {
+            colorStyle = "color-blue";
+        }
+        memberInfo.push(
+            {
+             "name": json.contents[i].name,
+             "nickname":json.contents[i].nickname,
+             "location":json.contents[i].location,
+             "icon_url": json.contents[i].icon_url,
+             "emphasis": json.contents[i].emphasis,
+             "catchphrase": json.contents[i].catchphrase,
+             "twitter": json.contents[i].twitter,
+             "facebook": json.contents[i].facebook,
+             "link": json.contents[i].link,
+             "colorStyle": colorStyle
+            }
+        );
+    }
+    $.tmpl($( "#member" ), memberInfo).appendTo( ".content-introduction-lawmaker" );
+});

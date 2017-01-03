@@ -94,82 +94,12 @@ figure {
   transform: rotateY(180deg);
 }
 
-
-@media screen and (max-height: 600px) {
-  .flip-container {
-    width: 350px;
-    height: 370px;
-  }
-
-  .front,
-  .back {
-    position: absolute;
-    width: 350px;
-    height: 370px;
-  }
-
-  .back p {
-    font-size: 25px;
-  }
-}
-
-@media screen and (max-height: 450px) {
-  .flip-container {
-    width: 250px;
-    height: 300px;
-  }
-
-  .front,
-  .back {
-    position: absolute;
-    width: 200px;
-    height: 220px;
-  }
-
-  .back p {
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .flip-container {
-    width: 350px;
-    height: 370px;
-  }
-  .front,
-  .back {
-    position: absolute;
-    width: 350px;
-    height: 370px;
-  }
-
-  .back p {
-    font-size: 25px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .flip-container {
-    width: 200px;
-    height: 220px;
-  }
-
-  .front,
-  .back {
-    position: absolute;
-    width: 200px;
-    height: 220px;
-  }
-
-  .back p {
-    font-size: 12px;
-  }
-}
-
 .flip-area-container {
     float: left;
-    margin-left: 260px;
     padding-left: 5px;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
 }
 
 .flip-horizen {
@@ -216,4 +146,42 @@ figure {
     left: 120px;
     bottom: 30px;
     font-weight: 900;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .flip-container {
+    width: 250px;
+    float: none;
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    width: 250px;
+    height: 220px;
+  }
+
+  .flip-area-container {
+      float: left;
+      padding-left: 5px;
+      text-align: center;
+      display: inline-block;
+      margin: auto;
+      width: 100%;
+  }
+
+  .flip-horizen {
+      width: 100%;
+  }
+
+  .front-question, .back-answer {
+      position: absolute;
+      top: 15px;
+      left: 30px;
+      font-weight: 800;
+      width: 180px;
+  }
+
 }

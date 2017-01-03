@@ -68,3 +68,61 @@
 .woman-name {
 
 }
+
+.sp-sns-area {
+	display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.member-container img {
+	    width: 80px;
+	    height: 80px;
+	    border-radius: 75px;
+	    display: block;
+	    vertical-align: center;
+	    margin: auto;
+	}
+
+	#woman-name {
+		line-height: 70px;
+		font-size: 20px;
+		margin: 0px;
+	}
+
+	.member-container {
+		border-radius: 10px;
+		height: 250px;
+		width: 80%;
+		vertical-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		padding: 20px;
+	}
+
+	.sns-area {
+		width: 40%;
+	    height: 100px;
+    	text-align: left;
+    	margin-left: 0px;
+    	display: none;
+	}
+
+	.info-area {
+	    float: left;
+	    width: 90%;
+	}
+
+	.info-area p {
+		text-align: left;
+		word-wrap: break-word;
+		margin: 0px;
+		font-size: 12px;
+	}
+
+	.sp-sns-area {
+		display: block;
+	}
+
+}

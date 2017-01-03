@@ -49,7 +49,7 @@ var data = {
 };
 
 // API へリクエスト
-$.getJSON('http://glamourousparty.com/api/cards',data, function(json) {
+$.getJSON('/api/cards',data, function(json) {
     // 警告
     if (json.contents.length === 0) {
         alert('コンテンツが見つかりませんでした(´・ω・｀)');
@@ -103,7 +103,7 @@ $(document).on('click', '.flip-container', function() {
 /* introduction-lawmaker */
 
 // API へリクエスト
-$.getJSON('http://glamourousparty.com/api/councilors', function(json) {
+$.getJSON('/api/councilors', function(json) {
     // 警告
     if (json.contents[0].length === 0) {
         alert('コンテンツが見つかりませんでした(´・ω・｀)');

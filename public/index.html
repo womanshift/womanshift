@@ -60,13 +60,19 @@
 			</div>
 		</div>
 		<script  type="text/javascript" charset="utf-8">
-
+			// カテゴリ取得
+			var category = "";
+			var param = location.search.substring(1).split('&');
+			// category切り替えられるようになったらパラメータから取得
+			if (!category=="") {
+				category = param[0];
+			}
 			var data = {
-				"category": 1   // パラメータ
+				"category": category   // パラメータ
 			};
 
 			// API へリクエスト
-            $.getJSON('http://glamourousparty.com/api/cards.json',data, function(json) {
+            $.getJSON('http://glamourousparty.com/api/cards',data, function(json) {
                 // 警告
                 if (json.contents.length === 0) {
                     alert('コンテンツが見つかりませんでした(´・ω・｀)');

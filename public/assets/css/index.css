@@ -34,7 +34,7 @@ figure {
 }
 
 .flip-container {
-  margin: 0 2%;
+  margin: 15px 5px;
   cursor: pointer;
   width: 250px;
   height: 300px;
@@ -104,12 +104,6 @@ figure {
 
 .flip-horizen {
     width: 900px;
-
-}
-
-.flip-container {
-    float: left;
-    margin: 15px 5px;
 }
 
 .front-caption {

@@ -8,6 +8,10 @@ $(function() {
         html += "<ul>";
         html += "<li>Q&Acategory</li>";
         $(menu.contents).each(function(i, v) {
+            // pathのパラメータがなかったら index.html?&category_id=2 にしてわたす
+            if (path == "index.html"){
+                path = "index.html?&category_id=3"
+            }
             active = active_css(path, "index.html?&category_id=" + v.id);
             html += "<li class='menu_category'><a href='index.html?&category_id=" + v.id + "' " + active + ">" + v.name + "</a></li>";
         });
@@ -38,18 +42,16 @@ function active_css(path, href){
 /* index */
 
 // カテゴリ取得
-var category = "";
+var category = 3;
 var param = location.search.substring(1).split('&');
-// category切り替えられるようになったらパラメータから取得
-if (!category=="") {
-    category = param[0];
+
+if (param.length!==1) {
+    category = param[1].split('=')[1];
 }
-var data = {
-    "category": category   // パラメータ
-};
+var url = 'http://glamourousparty.com/api/cards/' + category;
 
 // API へリクエスト
-$.getJSON('/api/cards',data, function(json) {
+$.getJSON(url, function(json) {
     // 警告
     if (json.contents.length === 0) {
         alert('コンテンツが見つかりませんでした(´・ω・｀)');
@@ -59,8 +61,7 @@ $.getJSON('/api/cards',data, function(json) {
     var cardsQuestion = [];
     for (i=0; i<=json.contents.length-1; i++) {
 
-        // 背景になるカードを交互に出し分ける
-        // ↑ によって文字も色わける
+        // 背景になるカード、文字の切り替え
         cardUrlQ = "/assets/img/Questionwhite.png",
         questionStyle =  "buleText",
         cardUrlA = "/assets/img/Answerblue.png",
@@ -103,7 +104,7 @@ $(document).on('click', '.flip-container', function() {
 /* introduction-lawmaker */
 
 // API へリクエスト
-$.getJSON('/api/councilors', function(json) {
+$.getJSON('http://glamourousparty.com/api/councilors', function(json) {
     // 警告
     if (json.contents[0].length === 0) {
         alert('コンテンツが見つかりませんでした(´・ω・｀)');

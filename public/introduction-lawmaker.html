@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./assets/css/common.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
@@ -22,13 +23,13 @@
 		<div id="menu"></div>
 		<div class="content-introduction-lawmaker">
 			<script id="member" type="text/x-jquery-tmpl">
-				<div class="member-container ${colorStyle}">
+				<div class="member-container ${colorStyle} ${border}">
 					<div class="picture-area">
 						<img src="${icon_url}" alt="メンバー">
 						<div class="sns-area">
-							<a href="${facebook}" class="">Facebook</a>
-							<a href="${twitter}" class="">twitter</a>
-							<a href="${link}" class="">link</a>
+							<a href="${facebook}" class="fa fa-facebook-square ${colorStyle}"></a>
+							<a href="${twitter}" class="fa fa-twitter ${colorStyle}"></a>
+							<a href="${link}" class="fa fa-external-link ${colorStyle}"></a>
 						</div>
 					</div>
 					<p id="woman-name">${name}</p>	
@@ -40,9 +41,9 @@
 							<p>${emphasis}</p>
 					</div>
 					<div class="sp-sns-area">
-						<a href="${facebook}" class="">Facebook</a>
-						<a href="${twitter}" class="">twitter</a>
-						<a href="${link}" class="">link</a>
+						<a href="${facebook}" class="fa fa-facebook-square ${colorStyle}"></a>
+						<a href="${twitter}" class="fa fa-twitter ${colorStyle}"></a>
+						<a href="${link}" class="fa fa-external-link ${colorStyle}"></a>
 					</div>
 				</div>
 			</script>

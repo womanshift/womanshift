@@ -407,8 +407,9 @@ p {
 
 .member-container a {
   display: block;
-  margin: 5px;
+  margin: 10px;
   float: left;
+  text-decoration: none;
 }
 
 .color-blue {
@@ -419,6 +420,9 @@ p {
 .color-white {
   color:  #4164bb;
   background-color: #ffffff;
+}
+
+.border-brue {
   border: 3px solid #4164bb;
 }
 
@@ -428,10 +432,11 @@ p {
 }
 
 .sns-area {
-  width: 80%;
   height: 30px;
   text-align: center;
-  margin-left: 50px;
+  padding: 0px 60px;
+  display: flex;
+  justify-content: center;
 }
 
 .info-area {
@@ -507,7 +512,9 @@ p {
   }
 
   .sp-sns-area {
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
   }
 
 }

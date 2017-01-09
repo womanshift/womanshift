@@ -2,7 +2,7 @@ $(function() {
     var path = window.location.href.split('/').pop();
     $("#logo").append("<a href='/'><img src='/assets/img/logo.png' /></a>");
     $("#toggle").append("<img src='/assets/img/menu_button.png' />");
-    $.getJSON("http://glamourousparty.com/api/categories.json" , function(menu) {
+    $.getJSON("/api/categories.json" , function(menu) {
         var active = "";
         var html = "<div class='menu_title'>Glamourous Party<br/>menu</div>";
         html += "<ul>";
@@ -48,7 +48,7 @@ var param = location.search.substring(1).split('&');
 if (param.length!==1) {
     category = param[1].split('=')[1];
 }
-var url = 'http://glamourousparty.com/api/cards/' + category;
+var url = '/api/cards/' + category;
 
 // API へリクエスト
 $.getJSON(url, function(json) {
@@ -104,7 +104,7 @@ $(document).on('click', '.flip-container', function() {
 /* introduction-lawmaker */
 
 // API へリクエスト
-$.getJSON('http://glamourousparty.com/api/councilors', function(json) {
+$.getJSON('/api/councilors', function(json) {
     // 警告
     if (json.contents[0].length === 0) {
         alert('コンテンツが見つかりませんでした(´・ω・｀)');
@@ -116,9 +116,11 @@ $.getJSON('http://glamourousparty.com/api/councilors', function(json) {
 
         // 背景になるカードを交互に出し分ける
         // ↑ によって文字も色わける
+        var border = "border-brue";
         var colorStyle = "color-white";
         if (i%2==0) {
             colorStyle = "color-blue";
+            border = "";
         }
         memberInfo.push(
             {
@@ -131,7 +133,8 @@ $.getJSON('http://glamourousparty.com/api/councilors', function(json) {
              "twitter": json.contents[i].twitter,
              "facebook": json.contents[i].facebook,
              "link": json.contents[i].link,
-             "colorStyle": colorStyle
+             "colorStyle": colorStyle,
+             "border": border
             }
         );
     }
